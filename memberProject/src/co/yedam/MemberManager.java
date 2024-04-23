@@ -13,7 +13,7 @@ public class MemberManager {
 		
 		while(run) {
 			System.out.println("1.회원목록 2.회원등록 3.정보수정 4.정보삭제 5.종료");
-			System.out.println(">>번호를 선택하세요");
+			System.out.print(">>번호를 선택하세요");
 			int cho = Integer.parseInt(sc.nextLine());
 			
 		switch(cho) {
@@ -73,15 +73,16 @@ public class MemberManager {
 		case 4:
 			System.out.println("삭제할 회원번호>>");
 			sempNo = sc.nextInt();
-//			
-//			if(dao.deleteSemp(mb)) {
-//				System.out.println();
-//			}else {
-//				
-//			}
+			mb = new Member();
+			mb.setSempNo(sempNo);
 			
-			
+			if(dao.deleteSemp(mb)) {
+				System.out.println("삭제완료");
+			}else {
+				System.out.println("삭제실패");
+			}
 			break;
+			
 		case 5:
 			System.out.println("시스템 종료합니다.");
 			run = false;
