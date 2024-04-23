@@ -8,7 +8,6 @@ public class EmpManager {
 	public static void main(String[] args) {
 		//Scanner
 		Scanner sc = new Scanner(System.in);
-		
 		boolean run = true;
 		EmpDao dao = new EmpDao();
 		
@@ -19,6 +18,7 @@ public class EmpManager {
 			
 			switch(menu) {
 			case 1:
+				//조회
 				List<Employee> emps = dao.empList();
 				for(Employee emp : emps) {
 					System.out.println(emp.showInfo());
@@ -26,6 +26,7 @@ public class EmpManager {
 //				dao.empList();
 				break;
 			case 2:
+				//등록
 				System.out.print("사원명>> ");
 				String name = sc.nextLine();
 				System.out.print("연락처>> ");
@@ -54,6 +55,7 @@ public class EmpManager {
 				
 				break;
 			case 3:
+				//수정
 				System.out.print("사원번호>> ");
 				String eno = sc.nextLine();
 				
@@ -62,16 +64,11 @@ public class EmpManager {
 //					
 //				}
 				
-				
-				
 				System.out.print("이메일>> ");
 				mail = sc.nextLine();
 				System.out.print("급여>> ");
 				salary = sc.nextLine();
 				
-				
-				
-					
 				emp = new Employee();
 				emp.setEmpNo(Integer.parseInt(eno));
 				emp.setEmail(mail);
@@ -82,10 +79,10 @@ public class EmpManager {
 				}else {
 					System.out.println("수정실패");
 				}
-				
 				break;
 				
 			case 4:
+				//삭제
 				System.out.println("삭제할 사원의 번호>>");
 				eno = sc.nextLine();
 				
@@ -100,6 +97,7 @@ public class EmpManager {
 				System.out.println("사원삭제");
 				break;
 			case 5:
+				//종료
 				System.out.println("종료");
 				run = false;
 				break;

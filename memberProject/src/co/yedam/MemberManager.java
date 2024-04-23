@@ -13,7 +13,7 @@ public class MemberManager {
 		
 		while(run) {
 			System.out.println("1.회원목록 2.회원등록 3.정보수정 4.정보삭제 5.종료");
-			System.out.print(">>번호를 선택하세요");
+			System.out.print("번호를 선택하세요>>");
 			int cho = Integer.parseInt(sc.nextLine());
 			
 		switch(cho) {
@@ -27,18 +27,15 @@ public class MemberManager {
 			break;
 			
 		case 2:
-			
 //			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 			
-			System.out.println("회원명>>");
+			System.out.print("회원명>>");
 			String name = sc.nextLine();
-			System.out.println("연락처>>");
+			System.out.print("연락처>>");
 			String phone = sc.nextLine();
-			System.out.println("생일>>");
+			System.out.print("생일>>");
 			String birth = sc.nextLine();
-			
-			
-			System.out.println("성별>>");
+			System.out.print("성별>>");
 			String gender = sc.nextLine();
 			
 			Member mb = new Member();
@@ -56,11 +53,11 @@ public class MemberManager {
 			break;
 		case 3:
 			System.out.println("수정할 회원번호>> ");
-			int sempNo = sc.nextInt();
+			String sempNo = sc.nextLine();
 			System.out.println("연락처>> ");
 			phone = sc.nextLine();
 			mb = new Member();
-			mb.setSempNo(sempNo);
+			mb.setSempNo(Integer.parseInt(sempNo));
 			
 			if(dao.updateSemp(mb)) {
 				System.out.println("수정완료");
@@ -71,10 +68,11 @@ public class MemberManager {
 			
 			
 		case 4:
-			System.out.println("삭제할 회원번호>>");
-			sempNo = sc.nextInt();
+			System.out.print("삭제할 회원번호>>");
+			sempNo = sc.nextLine();
+			
 			mb = new Member();
-			mb.setSempNo(sempNo);
+			mb.setSempNo(Integer.parseInt(sempNo));
 			
 			if(dao.deleteSemp(mb)) {
 				System.out.println("삭제완료");

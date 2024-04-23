@@ -42,7 +42,6 @@ public class MemberDao {
 				mb.setSempPhone(rs.getString("semp_phone"));
 				mb.setSempBirth(rs.getString("semp_birth"));
 				mb.setSempGen(rs.getString("semp_gen"));
-			
 				list.add(mb);
 			}
 		} catch (SQLException e) {

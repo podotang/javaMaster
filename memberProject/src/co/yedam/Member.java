@@ -7,8 +7,6 @@ public class Member {
 	private String sempBirth;
 	private String sempGen;
 	
-	
-	
 	public int getSempNo() {
 		return sempNo;
 	}
@@ -41,13 +39,9 @@ public class Member {
 	}
 	
 	
-	
 	public String showInfo() {
 		return String.format("%4d    %-6s    %-12s  %-10s  %s", sempNo,sempName,sempPhone,sempBirth,sempGen);
 	}
-	
-	
-	
 	
 	
 	
