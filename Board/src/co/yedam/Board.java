@@ -1,6 +1,10 @@
 package co.yedam;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
+import javax.xml.stream.events.Comment;
 
 public class Board {
 	private int boardNo;
@@ -8,6 +12,9 @@ public class Board {
 	private String boardContent;
 	private String boardWriter;
 	private String date;
+	private String modifiedDate;
+	
+
 
 	public int getBoardNo() {
 		return boardNo;
@@ -45,19 +52,74 @@ public class Board {
 		return date;
 	}
 
-	public void setWriteDate(String boardWriteDate) {
+	public void setWriteDate(String date) {
 		this.date = date;
 	}
 
-	public String showBoardList() {
+	public String getModifiedDate() {
+		return modifiedDate;
+	}
+	
+	public void setModifiedDate(String modifiedDate) {
+		this.modifiedDate = modifiedDate;
+	}
+	
+	public String showSearch() {
 		return String.format("%4d    %-10s    %-10s  %-10s", boardNo, boardTitle, boardWriter, date);
 
 	}
+	
+	
+	
+	public Board() {
+        // 댓글 리스트 초기화
+        this.comments = new ArrayList<>();
+    }
+	
+//	
+//	====================================================
+	private List<Comments> comments;
 
+    // 생성자, getter, setter 등 필요한 메서드는 생략합니다.
 
-	public String showSearchList() {
-		return String.format("%4d    %-10s    %-10s  %-10s", boardNo, boardTitle, boardWriter, date);
+    // 댓글 리스트 추가
+    public void addComment(Comments comment) {
+        if (comments == null) {
+            comments = new ArrayList<>();
+        }
+        comments.add(comment);
+    }
 
-	}
+    // 댓글 리스트 반환
+    public List<Comments> getComments() {
+        return comments;
+    }
+//    ====================================================
+	
+//	public String showComments() {
+//		return String.format("%4d    %-6s    %-12s  %-10s", commentNo,commentContent,commentWriter,commentDate);
+//	}
+    
+	
+//	public String showInfo() {
+//		return String.format("%4d    %-10s  \n  %-10s \n %-10s  %-10s", boardNo, boardTitle, boardContent, boardWriter , date);
+//	}
+	
+	
+//	public String showComments() {
+//		return String.format("%4d    %-6s    %-12s  %-10s", commentNo,commentContent,commentWriter,commentDate);
+//	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
