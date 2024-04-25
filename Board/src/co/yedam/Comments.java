@@ -44,7 +44,7 @@ public class Comments {
 	
 	
 	public String showComments() {
-		return String.format("%4d    %-6s    %-12s  %-10s", commentNo,commentContent,commentWriter,commentDate);
+		return String.format("%4d    %-18s    %-12s  %-10s", commentNo,commentContent,commentWriter,commentDate);
 	}
 
 	

@@ -95,21 +95,7 @@ public class Board {
         return comments;
     }
 //    ====================================================
-	
-//	public String showComments() {
-//		return String.format("%4d    %-6s    %-12s  %-10s", commentNo,commentContent,commentWriter,commentDate);
-//	}
-    
-	
-//	public String showInfo() {
-//		return String.format("%4d    %-10s  \n  %-10s \n %-10s  %-10s", boardNo, boardTitle, boardContent, boardWriter , date);
-//	}
-	
-	
-//	public String showComments() {
-//		return String.format("%4d    %-6s    %-12s  %-10s", commentNo,commentContent,commentWriter,commentDate);
-//	}
-	
+
 	
 	
 	

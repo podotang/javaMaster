@@ -29,7 +29,7 @@ public class CommentsDAO extends Board {
 	List<Comments> commentList(int cno) {
 		getConn();
 		List<Comments> list = new ArrayList<Comments>();
-		String sql = "select * from comments where cno = ?";
+		String sql = "select * from comments where cno = ? order by comment_no";
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, cno);

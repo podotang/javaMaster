@@ -25,7 +25,7 @@ public class MemberDAO {
 		}
 	}
 
-	// id, pw select 값이 있으면 true/ false loginCheck(id, pw)
+	// 로그인 id, pw select 값이 있으면 true/ false loginCheck(id, pw) 
 	public boolean loginCheck(String id, String pw) {
 		getConn();
 		String sql = " select member_id, member_password "
@@ -41,29 +41,113 @@ public class MemberDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
 		return success;
 	}
 	
-
-	// 로그인 되어있는 상태 확인
-	public boolean success() {
+	// 회원가입 하기
+	boolean signup(Member member) {
 		getConn();
-		String sql = "";
-		
-		return true;
+		String sql = " insert into member (member_id, member_password, member_email) ";
+				sql += " values(?,?,?)" ;
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, member.getMember_id());
+			psmt.setString(2, member.getMember_pw());
+			psmt.setString(3, member.getMemberEmail());
+			
+			int r = psmt.executeUpdate();
+			if(r>0) {
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	return false;
 	}
 	
 	
+	// 회원삭제
+	boolean deleteMember(Member member) {
+		getConn();
+		String sql = "delete from member where member_id = ? ";
+
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, member.getMember_id());
+
+			int r = psmt.executeUpdate();
+			if (r > 0) {
+				return true;
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return false;
+
+	}
 	
+	// 이메일 수정
+	boolean editEmail(Member member,String id) {
+	getConn();
+	String sql = " update member set member_email = ? ";
+	sql += " where member_id = ? ";
 	
+	try {
+		psmt = conn.prepareStatement(sql);
+		psmt.setString(1, member.getMemberEmail());
+		psmt.setString(2, id);
+		int r = psmt.executeUpdate();
+		if (r > 0) {
+			return true;
+		}		
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
+	return false;
+	}
 	
+	// 패스워드 수정
+	boolean editPw(Member member,String id) {
+	getConn();
+	String sql = " update member set member_password = ? ";
+	sql += " where member_id = ? ";
+	try {
+		psmt = conn.prepareStatement(sql);
+		psmt.setString(1, member.getMember_pw());
+		psmt.setString(2, id);
+		
+		int r = psmt.executeUpdate();
+		if (r > 0) {
+			return true;
+		}		
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
+	return false;
+	}
 	
-	
-	
-	
-	
-	
+
+		
+	// 멤버 삭제
+		boolean deleteMember(String id) {
+			getConn();
+			String sql = "delete from member where member_id = ? ";
+			try {
+				psmt = conn.prepareStatement(sql);
+				psmt.setString(1, id);
+				int r = psmt.executeUpdate();
+				if(r>0) {
+					return true;
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return false;
+			
+			
+		}
 	
 	
 	

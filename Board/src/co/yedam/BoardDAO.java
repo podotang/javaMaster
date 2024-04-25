@@ -33,12 +33,10 @@ public class BoardDAO extends Board {
 		String sql;
 		try {
 			if (title == null || title.isEmpty()) {
-				System.out.println(title.length() + 1);
 				// 입력값이 없으면 전체 목록을 가져옴
 				sql = "select * from board order by board_no";
 				psmt = conn.prepareStatement(sql);
 			} else {
-				System.out.println(title.length() + 2);
 				// 입력값이 있으면 해당하는 문자가 들어있는 글만 가져옴
 				sql = "select * from board where board_title like '%'||?||'%' order by board_no";
 				psmt = conn.prepareStatement(sql);
@@ -60,12 +58,12 @@ public class BoardDAO extends Board {
 		return list;
 	}
 
-
 	// 글 상세보기
 	Board boardInfo(int boardNo) {
 		getConn();
 		Board board = null;
 		String sql = "select * from board b  where board_no = ?";
+
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, boardNo);
@@ -91,15 +89,27 @@ public class BoardDAO extends Board {
 	boolean insertContent(Board board) {
 		getConn();
 		String sql = " insert into board (board_no,board_title,board_content,board_writer) ";
-		sql += " values(board_seq.nextval,?,?,?)";
+		sql += " values(?,?,?,?)";
+
+		int newSequence = -1;
+
+		String seqSql = "select board_seq.nextval from dual";
 		try {
+			psmt = conn.prepareStatement(seqSql);
+			rs = psmt.executeQuery();
+			if (rs.next()) {
+				newSequence = rs.getInt(1);
+			}
+			int param = 1;
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, board.getBoardTitle());
-			psmt.setString(2, board.getBoardContent());
-			psmt.setString(3, board.getBoardWriter());
+			psmt.setInt(param++, newSequence);
+			psmt.setString(param++, board.getBoardTitle());
+			psmt.setString(param++, board.getBoardContent());
+			psmt.setString(param++, board.getBoardWriter());
 
 			int r = psmt.executeUpdate();
 			if (r > 0) {
+				board.setBoardNo(newSequence);
 				return true;
 			}
 		} catch (SQLException e) {
@@ -108,7 +118,7 @@ public class BoardDAO extends Board {
 		return false;
 	}
 
-	// 글수정 - 완료
+	// 글수정
 	boolean updateContent(Board board) {
 		getConn();
 		String sql = " update board";
@@ -150,111 +160,7 @@ public class BoardDAO extends Board {
 		}
 		return false;
 	}
-//
-//	// 댓글 조회
-//	List<Comments> commentList(Comments comments) {
-//		List<Comments> list = new ArrayList<Comments>();
-//		String sql = "select * from comments order by comment_no = ?";
-//
-//		try {
-//			psmt = conn.prepareStatement(sql);
-//			rs = psmt.executeQuery();
-//			while (rs.next()) {
-//				comments.setCommentNo(rs.getInt("comment_no"));
-//				comments.setCommentContent(rs.getString("comment_content"));
-//				comments.setCommentWriter(rs.getString("comment_writer"));
-//				list.add(comments);
-//			}
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//		return list;
-//	}
-//
-//	// 댓글 쓰기
-//	boolean writeComment(Comments comments) {
-//		getConn();
-//		String sql = " insert into comments (comment_no, comment_content, comment_writer)";
-//		sql += " values(com_seq.nextval,?,?)";
-//
-//		try {
-//			psmt = conn.prepareStatement(sql);
-//			psmt.setString(1, comments.getCommentContent());
-//			psmt.setString(2, comments.getCommentWriter());
-//
-//			int r = psmt.executeUpdate();
-//			if (r > 0) {
-//				return true;
-//			}
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//		return true;
-//	}
-//
-//	// 댓글 수정
-//
-//	boolean updateComment(Comments comments) {
-//		getConn();
-//		String sql = "update comments set  comment_content = ? where comment_no = ? ";
-//
-//		try {
-//			psmt = conn.prepareStatement(sql);
-//			psmt.setString(1, comments.getCommentContent());
-//			psmt.setString(2, comments.getCommentWriter());
-//
-//			int r = psmt.executeUpdate();
-//			if (r > 0) {
-//				return true;
-//			}
-//
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//
-//		return true;
-//	}
-//
-//	// 댓글 삭제
-//	boolean deleteComments(Comments comments) {
-//		String sql = " delete from comments where comment_no = ? ";
-//
-//		try {
-//			psmt = conn.prepareStatement(sql);
-//			psmt.setInt(1, getBoardNo());
-//			int r = psmt.executeUpdate();
-//			if (r > 0) {
-//				return true;
-//			}
-//
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//		return true;
-//	}
 
-	// 회원삭제
-	boolean deleteMember(Member member) {
-		getConn();
-		String sql = "delete from member where member_id = ? ";
 
-		try {
-			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, member.getMember_id());
-
-			int r = psmt.executeUpdate();
-			if (r > 0) {
-				return true;
-			}
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		return false;
-
-	}
-
-	// 로그인
 
 } // end class
