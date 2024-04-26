@@ -1,5 +1,6 @@
 package co.yedam;
 
+import java.sql.SQLSyntaxErrorException;
 import java.util.Scanner;
 
 public class MainProc {
@@ -35,47 +36,31 @@ public class MainProc {
 
 	}// end of exe.
 
-	// 페이징 처리
-	// m:총개시글 n:한페이지에 보여줄갯수
-	static int getTotalPage(int m, int n) {
-		if (m % n == 0) {
-			return m / n;
-		} else {
-			return m / n + 1;
-		}
-	}
-
-	public static void main(String[] args) {
-		System.out.println(getTotalPage(5, 10)); // 1 출력
-		System.out.println(getTotalPage(15, 10)); // 2 출력
-		System.out.println(getTotalPage(25, 10)); // 3 출력
-		System.out.println(getTotalPage(30, 10)); // 3 출력
-	}
-
+	
+	
 	// 로그인하기
 	public void login() {
 		for (int i = 0; i < 3; i++) {
-			System.out.print("id>>");
-			id = sc.nextLine();
-			System.out.print("pw>>");
-			String pw = sc.nextLine();
-			if (!mdao.loginCheck(id, pw)) {
-				if (i == 2) {
-					System.out.println("로그인 실패입니다.");
-					join();
-//					return;
+				System.out.print("id>>");
+				id = sc.nextLine();
+				System.out.print("pw>>");
+				String pw = sc.nextLine();
+				if (!mdao.loginCheck(id, pw)) {
+					if (i == 2) {
+						System.out.println("로그인 실패입니다.");
+						join();
+	//					return;
+					}
+					System.out.println("id, pw 확인하세요");
+				} else {
+					success = true;
+					System.out.println("로그인 성공");
+					break;
 				}
-				System.out.println("id, pw 확인하세요");
-			} else {
-				success = true;
-				System.out.println("로그인 성공");
-				break;
-			}
-		} // 3번반복후 탈출
-
+			} // 3번반복후 탈출
+		
 		BoardProc bproc = new BoardProc(id);
 		bproc.boarding();
-
 	}
 
 	// 회원가입
@@ -96,5 +81,6 @@ public class MainProc {
 		} else {
 			System.out.println("회원가입 실패");
 		}
+		login();
 	}
 }

@@ -25,17 +25,41 @@ public class BoardDAO extends Board {
 		}
 	}
 
+	// 전체글 갯수
+	int boardCount(String title) {
+		getConn();
+		int result = 0;
+		String sql = "select count(board_no) from board where board_title like '%'||?||'%'";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, title);
+			rs = psmt.executeQuery();
+			if (rs.next()) {
+				result = rs.getInt(1);
+				return result;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
 	// 게시판 목록 - 완료
 	// 게시판 검색목록 - 완료
-	List<Board> boardList(String title) {
+	List<Board> boardList(String title, int page) {
+		System.out.println("page: " + page);
 		getConn();
+		int max = page * 20;
+		int min = max - 20;
 		List<Board> list = new ArrayList<Board>();
 		String sql;
 		try {
 			if (title == null || title.isEmpty()) {
 				// 입력값이 없으면 전체 목록을 가져옴
-				sql = "select * from board order by board_no";
+				sql = "select * from( select board.*, rownum as rnum from board where rownum<=?) where rnum>? ";
 				psmt = conn.prepareStatement(sql);
+				psmt.setInt(1, max);
+				psmt.setInt(2, min);
 			} else {
 				// 입력값이 있으면 해당하는 문자가 들어있는 글만 가져옴
 				sql = "select * from board where board_title like '%'||?||'%' order by board_no";
@@ -131,12 +155,10 @@ public class BoardDAO extends Board {
 			psmt.setString(1, board.getBoardTitle());
 			psmt.setString(2, board.getBoardContent());
 			psmt.setInt(3, board.getBoardNo());
-
 			int r = psmt.executeUpdate();
 			if (r > 0) {
 				return true;
 			}
-
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -160,7 +182,5 @@ public class BoardDAO extends Board {
 		}
 		return false;
 	}
-
-
 
 } // end class

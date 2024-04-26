@@ -11,7 +11,6 @@ public class MemberProc {
 	public MemberProc(String id) {
 		this.id = id;
 	}
-
 	// 회원삭제
 	public void memberDelete() {
 		System.out.println("정말 탈퇴하시나요?(y/n)");
@@ -29,7 +28,7 @@ public class MemberProc {
 
 	// 회원정보 수정
 	public void editMember() {
-		System.out.println("1.회원정보 수정 2.회원탈퇴");
+		System.out.println("1.회원정보 수정 2.회원탈퇴 3.메인으로");
 		int memberSet = sc.nextInt();
 		sc.nextLine();
 		switch (memberSet) {
@@ -40,7 +39,6 @@ public class MemberProc {
 			sc.nextLine();
 
 			switch (editIdPw) {
-
 			case 1:
 				System.out.println("새로운 이메일>>");
 				String newEmail = sc.nextLine();
@@ -63,6 +61,8 @@ public class MemberProc {
 		case 2:
 			// 로그인된 상태에서 자신것만 없앰
 			memberDelete();
+			break;
+		case 3:
 			break;
 		}
 	}

@@ -40,9 +40,35 @@ public class MemberDAO {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+			System.out.println("형식에맞지 않습니다.");
 		}
 		return success;
 	}
+	
+	
+	
+//	 로그인 id, pw select 값이 있으면 true/ false loginCheck(id, pw) 
+//		public boolean loginCheck(String id, String pw) {
+//			getConn();
+//			String sql = "SELECT COUNT(*) AS count FROM member WHERE member_id = ? AND member_password = ?";
+//			boolean success = false;
+//			try {
+//				psmt = conn.prepareStatement(sql);
+//				psmt.setString(1, id);
+//				psmt.setString(2, pw);
+//				rs = psmt.executeQuery();
+//				if(rs.next()) {
+//					int count = rs.getInt("count");
+//					success = count>0;
+//				}
+//			} catch (SQLException e) {
+//				e.printStackTrace();
+//				System.out.println("형식에맞지 않습니다.");
+//			}
+//			return success;
+//		}
+	
+	
 	
 	// 회원가입 하기
 	boolean signup(Member member) {
