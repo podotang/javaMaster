@@ -56,7 +56,7 @@ public class BoardDAO extends Board {
 		try {
 			if (title == null || title.isEmpty()) {
 				// 입력값이 없으면 전체 목록을 가져옴
-				sql = "select * from( select board.*, rownum as rnum from board where rownum<=?) where rnum>? ";
+				sql = "select * from( select board.*, rownum as rnum from board where rownum<=?) where rnum>? order by board_no";
 				psmt = conn.prepareStatement(sql);
 				psmt.setInt(1, max);
 				psmt.setInt(2, min);
