@@ -20,7 +20,10 @@ public class MainProc {
 	public void exe() {
 		boolean sign = true;
 		while (sign) {
+			System.out.println("====================================================================");
 			System.out.println("1.로그인하기 2.회원가입하기");
+			System.out.println("====================================================================");
+
 			int login = sc.nextInt();
 			sc.nextLine();
 			switch (login) {

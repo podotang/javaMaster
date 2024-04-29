@@ -11,7 +11,7 @@ public class BoardProc {
 	String id;
 	Board board = new Board();
 	Comments com = new Comments();
-
+	MainProc main = new MainProc();
 	public BoardProc(String id) {
 		this.id = id;
 	}
@@ -21,11 +21,13 @@ public class BoardProc {
 		boolean run = true;
 		while (run) {
 			try {
+				System.out.println("====================================================================");
 				System.out.println("1.게시판목록 2.글쓰기 3.글수정하기 4.삭제 5.개인정보수정 6.로그아웃");
+				System.out.println("====================================================================");
+
 				System.out.print("선택>>");
 				int chooseN = sc.nextInt();
 				sc.nextLine();
-
 				switch (chooseN) {
 				case 1:
 					// 글목록
@@ -56,7 +58,7 @@ public class BoardProc {
 				case 6:
 					// 종료
 					System.out.println("로그아웃합니다");
-					login();
+					main.exe();
 					break;
 				}
 			} catch (InputMismatchException e) {
@@ -107,7 +109,7 @@ public class BoardProc {
 				}
 			}
 
-			System.out.print("상세보기(글번호) 이전(p) 다음(n) \n (메인으로 가려면 0번)>> ");
+			System.out.print("\n 상세보기(글번호) 이전(p) 다음(n) \n (메인으로 가려면 0번)>> ");
 			int selectedBoardNo = 0;
 			String choice = null;
 			try {
@@ -152,8 +154,10 @@ public class BoardProc {
 				for (Comments com : clist) {
 					System.out.println(com.showComments());
 				}
-
+				System.out.println("====================================================================");
 				System.out.println("1.댓글쓰기 2.댓글 수정 3.댓글 삭제 4.메인으로");
+				System.out.println("====================================================================");
+
 				int reply = sc.nextInt();
 				sc.nextLine();
 
@@ -212,23 +216,19 @@ public class BoardProc {
 			System.out.println("작성자만 글을 수정할 수 있음");
 			return;
 		}
-
 		System.out.print("제목수정>> ");
 		String boardTitle = sc.nextLine();
 		System.out.print("내용수정>> ");
 		String boardContent = sc.nextLine();
-
 		board.setBoardNo(chooseNum);
 		board.setBoardTitle(boardTitle);
 		board.setBoardContent(boardContent);
-
 		if (bdao.updateContent(board)) {
 			System.out.println("수정 완료");
 			System.out.println(bdao.boardInfo(board.getBoardNo()).showSearch());
 		} else {
 			System.out.println("수정 실패");
 		}
-
 	}
 
 	// 글삭제

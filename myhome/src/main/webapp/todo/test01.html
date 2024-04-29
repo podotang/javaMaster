@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      width: 400px;
+      height: 380px;
+      background-color: yellow;
+    }
+
+    span {
+      display: inline-block;
+      width: 85px;
+      height: 30px;
+      padding: 2px;
+      margin: 2px;
+      background-color: cyan;
+    }
+  </style>
+</head>
+
+<body>
+  <input type="text" id="keyword">
+  <button id="findBtn">찾기</button>
+  <div id="show">
+    <span>Lorem</span>
+    <span>ipsum</span>
+    <span>dolor</span>
+    <span>sit</span>
+    <span>amet</span>
+    <span>consectetur</span>
+    <span>adipisicing</span>
+    <span>elit.</span>
+    <span>Accusantium</span>
+    <span>dolores</span>
+    <span>reprehende</span>
+    <span>eius</span>
+    <span>distinctio,</span>
+    <span>molestiae</span>
+    <span>ratione</span>
+    <span>culpa</span>
+    <span>laborum</span>
+    <span>quia</span>
+    <span>odio</span>
+    <span>deleniti</span>
+    <span>non</span>
+    <span>aliquam</span>
+    <span>modi</span>
+    <span>nostrum</span>
+    <span>quas!</span>
+    <span>Ab</span>
+    <span>atque</span>
+    <span>ullam</span>
+    <span>in</span>
+    <span>dolorum.</span>
+  </div>
+  <p id ="remainCount">100초</p>
+ <script>
+/*  // findBtn의 클릭 이벤트를 설정
+    document.getElementById('findBtn').addEventListener('click', function(e){
+        // 입력된 키워드를 가져옴
+        let keyword = document.getElementById('keyword').value;
+        // span 요소 모두를 가져옴
+        let spans = document.querySelectorAll('span');
+        // span 요소를 반복하여 입력된 키워드와 일치하는 것이 있으면 제거
+        for(let i = 0; i < spans.length; i++) {
+            if(spans[i].textContent === keyword) {
+                spans[i].parentNode.removeChild(spans[i]);
+            }
+        }
+        // 입력값을 지움
+        document.getElementById('keyword').value = '';
+    }); */
+
+   
+   
+    document.getElementById('findBtn').addEventListener('click', function(e) {
+        let keyword = document.getElementById('keyword').value;
+        let spans = document.querySelectorAll('span');
+        spans.forEach(function(span) {
+            if (span.innerText === keyword) {
+                span.remove();
+            }
+        });
+        // 모든 span 요소가 제거되었는지 확인
+        if (document.querySelectorAll('span').length === 0) {
+            clearInterval(timerInterval); // 타이머 중지
+            alert("성공"); // 성공 알림
+        }
+    });
+    // 남은 시간
+    let sec = 100;
+    let timerInterval = setInterval(function() {
+        sec--;
+        document.querySelector('#remainCount').innerText = sec + "초";
+
+        // 0초가 되면
+        if (sec <= 0) {
+            clearInterval(timerInterval); // 타이머 중지
+            alert("실패"); // 실패 알림
+        }
+    }, 1000);
+/*    
+document.getElementById('findBtn').addEventListener('click', function(e){
+    let keyword = document.getElementById('keyword').value;
+    let spans = document.querySelectorAll('span');
+    allSpans = document.querySelectorAll('span');
+    if(allSpans.length == 0 && sec>=0){
+    	alert('성공');
+    }
+    allSpans.forEach(function(spans){
+    	if(spans.innerText == userVal){
+    		spans.remove();
+    	}
+    });
+});
+ 
+    //남은시간 ->if문 잘써야함
+    let sec = 100;
+    setInterval(function(){
+    	sec--;
+    	document.querySelector('#remainCount').innerText = sec+ "초";
+    }, 1000);
+     */
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

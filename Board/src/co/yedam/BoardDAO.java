@@ -15,7 +15,7 @@ public class BoardDAO extends Board {
 
 	// DB 연결
 	private void getConn() {
-		String url = "jdbc:oracle:thin:@localhost:1521:xe";
+		String url = "jdbc:oracle:thin:@192.168.0.30:1521:xe";
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, "BoardProject", "BoardProject");
