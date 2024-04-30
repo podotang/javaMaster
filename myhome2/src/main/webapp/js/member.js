@@ -87,22 +87,14 @@ document.querySelector('thead input[type=checkbox]')
 	});
 
 // 수정
-// 수정 버튼 클릭 이벤트 등록
-/*document.querySelector('#updateBtn').addEventListener('click', function() {
-    let num = document.querySelector('#memberNo').value;
-    let name = document.querySelector('#memberName').value;
-    let point = document.querySelector('#memberPoint').value;
-
-    // 여기서 수정된 정보를 사용하여 원하는 작업을 수행하면 됩니다.
-    console.log("수정된 정보:", num, name, point);
-});
-*/
 
 // 수정 버튼 클릭 이벤트 등록
 document.querySelector('#updateBtn').addEventListener('click', function() {
     let num = document.querySelector('#memberNo').value;
     let name = document.querySelector('#memberName').value;
     let point = document.querySelector('#memberPoint').value;
+
+    console.log("수정된 정보:", num, name, point);
 
     // 수정된 정보를 현재 선택된 행에 반영
     let selectedRow = document.querySelector('#tlist tbody tr.selected');
@@ -113,6 +105,16 @@ document.querySelector('#updateBtn').addEventListener('click', function() {
         cells[2].innerText = point;
     }
 });
+
+
+
+
+document.querySelectorAll('div').forEach(function(el){
+	el.setAttribute('class', 'bold padding10');
+});
+
+document.getElementById('title').className += ' bigtext';
+
 
 
 
