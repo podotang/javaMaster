@@ -42,7 +42,6 @@ public class MemberDao {
 				mb.setSempPhone(rs.getString("semp_phone"));
 				mb.setSempBirth(rs.getString("semp_birth"));
 				mb.setSempGen(rs.getString("semp_gen"));
-			
 				list.add(mb);
 			}
 		} catch (SQLException e) {
@@ -100,10 +99,9 @@ public class MemberDao {
 	
 	
 	//회원 삭제	
-	boolean deleteSemp(Member member) {
+	boolean deleteSemp(Member member,newId) {
 		getConn();
-		String sql = "delete from semp where semp_no = ? ";
-		
+		String sql = "delete from member where member_id = ? ";
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, member.getSempNo());

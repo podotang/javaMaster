@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원관리</title>
+</head>
+<body>
+<!-- myinfo/member.html -->
+<h3>회원정보관리</h3>
+
+<div id ="title">title</div>
+<div id ="content">content</div>
+
+
+<table border='1' id="register">
+<tr>
+	<th>회원 번호</th>
+	<td> <input id = "memberNo"> </td>
+</tr>
+<tr>
+	<th>회원 이름</th>
+	<td> <input id = "memberName"> </td>
+</tr>
+<tr>
+	<th>회원 점수</th>
+	<td> <input id = "memberPoint"> </td>
+</tr>
+<tr align = 'center'>
+	<td colspan = '2'><button id="addMember">추가</button>
+	<button id = "updateBtn">수정</button> </td>
+	<!-- 숙제 : 수정버튼 클릭시 => 회원번호를 기준으로 회원이름, 점수 수정시키기  -->
+	<!-- document.querySelectorAll -->
+</tr>
+</table>
+<hr>
+<table border ='1' id = "tlist">
+	<thead>
+	<tr>
+		<th>회원번호</th><th>회원이름</th>
+		<th>회원점수</th><th>삭제</th>
+		<th><input type="checkbox" id= "check"></th>
+	</tr>
+	</thead>
+	<tbody>
+	
+	</tbody>
+</table>
+
+<script src="../js/data.js"></script>
+<script src="../js/member.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>정유진 소개</title>
+</head>
+<body>
+	<!-- myinfo/resume.html -->
+	<h3>소개란.....</h3>
+	<table border = '1'>
+		<tr>
+		<th>이름</th><td>정유진</td>
+		<th>연락처</th><td>010-1234-5678</td>
+		<th>성별</th><td>여</td>
+		</tr>
+	</table>
+	<button>추가</button>
+	<!-- ./는 현재페이지 ../는 바로윗단계폴더-->
+	<a href="../index.html">첫페이지로 이동</a>
+	<script type="text/javascript">
+		document.querySelector('td').innerText = 'JungYujin';
+		document.querySelector('td:nth-of-type(2)').innerText = '010-1004-1004';
+		document.querySelector('td:nth-of-type(3)').innerText = 'woman';
+		
+		// 추가 버튼 클릭하면 '이름' : '홍길동' '연락처' : 010-1210-2020, 성별 : 남
+		
+	</script>
+</body>
+</html>
