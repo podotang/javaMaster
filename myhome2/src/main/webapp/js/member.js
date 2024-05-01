@@ -107,9 +107,7 @@ document.querySelector('#updateBtn').addEventListener('click', function() {
 		cells[2].innerText = point;
 		cells.forEach(cell => console.log(cell.innerText));
 		}
-	}
-
-});
+	});
 
 
 

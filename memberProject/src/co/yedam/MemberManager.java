@@ -218,24 +218,3 @@ public class MemberManager {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> branch 'master' of https://github.com/podotang/javaMaster.git
