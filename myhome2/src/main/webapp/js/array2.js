@@ -1,4 +1,3 @@
-
 let genderAry = [];
 empList.forEach(emp => {
 	if (genderAry.indexOf(emp.gender) == -1) {
@@ -12,25 +11,32 @@ genderAry.forEach(gender => {
 	document.querySelector('#genderList').appendChild(opt);
 });
 
+document.querySelector('#genderList').addEventListener('change', updateList)
+
+function updateList() {
+	let allGender = document.querySelector('#genderList').value;
+	let selectedGender = empList.filter(emp => emp.gender == allGender);
+	makeList(selectedGender);
+}
+
 // 함수(배열)
 function makeList(ary = []) {
-	let obj = { id: 1, first_name: '', last_name: '', email: '', gender: '', salary: '' };
-	let props = ['id', 'first_name', 'email', 'salary']
+	let tbody = document.querySelector('#show tbody');
+	tbody.innerHTML = '';
 
+	let props = ['id', 'first_name', 'email', 'salary']
 	ary.forEach(emp => {
-		// 한건에 대한 처리
 		let tr = document.createElement('tr');
 		props.forEach(prop => {
 			let td = document.createElement('td');
 			td.innerHTML = emp[prop];
 			tr.appendChild(td);
 		})
-		document.querySelector('#show tbody').appendChild(tr);
+		tbody.appendChild(tr); // 행을 테이블에 추가
 	})
 }
 
 makeList(empList);
-
 
 
 

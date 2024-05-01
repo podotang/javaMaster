@@ -11,7 +11,7 @@ const members = [
 
 members.forEach(function(item,idx,ary){
 	if(item.point>95){
-	console.log(item,idx,ary);
+	//console.log(item,idx,ary);
 	}
 	
 });
