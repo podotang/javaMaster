@@ -1,3 +1,4 @@
+//수정부분 선생님꺼
 // 추가 클릭이벤트 등록.
 //사용자의 입력값 3개 = > tr > td*3  : tr의 하위요소로 td를 3개 만들어라 => tbody하위요소 추가.
 document.querySelector('#addMember').addEventListener('click', addMemberfnc);
@@ -20,15 +21,15 @@ function makeRow(member = { num, name, point }) {
 	tr.addEventListener('click', function(e) {
 		e.stopPropagation();
 
-		// 기존에 선택된 행에 대한 selected 클래스 제거
-		let selectedRow = document.querySelector('#tlist tbody tr.selected');
-		if (selectedRow) {
-			selectedRow.classList.remove('selected');
-		}
-
-		// 현재 클릭한 행에 selected 클래스 추가
-		tr.classList.add('selected');
-
+		/*	// 기존에 선택된 행에 대한 selected 클래스 제거
+			let selectedRow = document.querySelector('#tlist tbody tr.selected');
+			if (selectedRow) {
+				selectedRow.classList.remove('selected');
+			}
+	
+			// 현재 클릭한 행에 selected 클래스 추가
+			tr.classList.add('selected');
+	*/
 		document.querySelector('#memberNo').value
 			= tr.children[0].innerHTML;
 		document.querySelector('#memberName').value
@@ -89,7 +90,6 @@ document.querySelector('thead input[type=checkbox]')
 			})
 	});
 
-
 // 수정 
 document.querySelector('#updateBtn').addEventListener('click', function() {
 	let num = document.querySelector('#memberNo').value;
@@ -97,7 +97,6 @@ document.querySelector('#updateBtn').addEventListener('click', function() {
 	let point = document.querySelector('#memberPoint').value;
 
 	//console.log("수정된 정보:", num, name, point);
-
 	let selectedRow = document.querySelector('#tlist tbody tr.selected');
 	if (selectedRow) {
 		let cells = selectedRow.querySelectorAll('td');
@@ -105,14 +104,30 @@ document.querySelector('#updateBtn').addEventListener('click', function() {
 		cells[1].innerText = name;
 		cells[2].innerText = point;
 		cells.forEach(cell => console.log(cell.innerText));
-		}
-	});
+	}
+});
 
+makeList(empList);
 
+function makeList() {
+	let props = ['id', 'first_name', 'email', 'salary']
+	let tr = document.createElement('tr');
+	document.querySelector('#show tbody').innerHTML = '';	// 기존목록지우기
+	ary.forEach(emp => {
+		props.forEach((prop) => {
+			let td = document.createElement('td');
+			td.innerHTML = emp[prop];
+			tr.appendChild('td');
+		})
+		document.querySelector('#show tbody').appendChild(tr);
+	})
 
+}
 
-
-
+document.querySelector('#genderList').addEventListener('change', function() {
+	let filterAry = empList.filter(emp => emp.gender == this.value);
+	makeList(filterAry);
+})
 
 
 
