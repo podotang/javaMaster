@@ -92,10 +92,7 @@ function updateRow() {
 		//oldTr, newTr 이용해서 수정누르면 다시 인풋이던게 원래로 돌아가기
 		if (result.retCode == 'OK') {
 			let newTr = makeRow(result.retVal);
-			console.log(newTr);
-			oldTr.querySelector('button').addEventListener('click', function(){
-				
-			});
+			oldTr.parentElement.replaceChild(newTr,oldTr);
 		}
 	}
 }
