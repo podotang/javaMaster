@@ -96,6 +96,7 @@ function showPaging(page = 1) {	//0~9 : 1page //10~19 : 2page
 			return true;
 		}
 	})
+	
 	//목록삭제
 	document.querySelector('#list').innerHTML = '';
 	fAry.forEach(center => {
