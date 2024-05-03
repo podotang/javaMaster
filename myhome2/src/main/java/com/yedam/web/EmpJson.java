@@ -24,6 +24,9 @@ public class EmpJson extends HttpServlet {
 		// 삭제기능(사원번호 emp.html에서 파라미터 수신)
 		// getParmeter는 무조건 String 타입반환함으로 int타입으로 파싱해주기!!!
 		// 추가add, edit, delete
+		//입력한글
+		req.setCharacterEncoding("utf-8");
+		//출력한글
 		resp.setContentType("text/json;charset=utf-8"); // 한글출력
 		EmpDAO edao = new EmpDAO();
 		String job = req.getParameter("job");

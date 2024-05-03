@@ -35,8 +35,6 @@ public class EmpListJsonServlet extends HttpServlet {
 		//웹브라우저에 출력시키기
 		resp.getWriter().println(json);
 		
-		
-		
 	}
 	
 	
