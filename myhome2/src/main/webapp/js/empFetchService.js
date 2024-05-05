@@ -10,21 +10,30 @@ function initForm() {
 			let tr = makeRow(emp);
 			document.querySelector('#elist').appendChild(tr);
 		}) // forEach 
+		document.querySelector('thead input[type=checkbox]')
+			.addEventListener('change', function() {
+				document.querySelectorAll('tbody input[type=checkbox]')
+					.forEach((item) => {
+						item.checked = this.checked
+					})
+			});
 	},//successCall
 		err => console.log(err) //errorCall
 	);
 
-	fetch('../empJson.json')	//반환결과값이 promise 객체
-		.then(result => result.json()) // 출력스트림(json)문자열 -> 객체변환
-		.then(data =>
-			data.forEach(emp => {
-				let tr = makeRow(emp);
-				document.querySelector('#elist').appendChild(tr);
-			})
-		)
-		.catch(err => console.log(err));
+	/*	fetch('../empJson.json')	//반환결과값이 promise 객체
+			.then(result => result.json()) // 출력스트림(json)문자열 -> 객체변환
+			.then(data =>
+				data.forEach(emp => {
+					let tr = makeRow(emp);
+					document.querySelector('#elist').appendChild(tr);
+				})
+			)
+			.catch(err => console.log(err));*/
 	// 등록이벤트.
 	document.querySelector('#addBtn').addEventListener('click', addRow);
+	document.querySelector('#delBtn').addEventListener('click', deleteChecked);
+
 }// end of initForm
 //
 function makeRow(emp = {}) {
@@ -44,35 +53,52 @@ function makeRow(emp = {}) {
 	btn.addEventListener('click', deleteRow);
 	td.appendChild(btn);
 	tr.appendChild(td);
+
+
+	td = document.createElement('td');
+	let chk = document.createElement('input');
+	chk.setAttribute('type', 'checkbox');
+	td.appendChild(chk);
+	tr.appendChild(td);
 	return tr;
 }// end of makeRow();
+
 
 //삭제이벤트 (완료)
 function deleteRow() {
 	//this 버튼이벤트를 받는 대상 -> 데이터의 사번부분
 	let eno = this.parentElement.parentElement.dataset.no;
 	let tr = this.parentElement.parentElement;
-	
+	console.log(eno);
 	svc.deleteEmp(eno,
 		data => {
 			if (data.returnCode == 'OK') {
-				let newTr = makeRow(data.retVal);
-				oldTr.parentElement.replaceChild(newTr, oldTr);
+				tr.remove();
 			}
 		},
 		err => console.log(err)
 	)
 } // end of deleteRow
 
+function deleteChecked() {
+	let checkedRows = document.querySelectorAll('input[type="checkbox"]:checked');
+	checkedRows.forEach(checkbox => {
+		let eno = checkbox.parentElement.parentElement.dataset.no;
+		svc.deleteEmp(eno,
+			data => {
+				if (data.returnCode == 'OK') {
+					checkbox.parentElement.parentElement.remove();
+				}
+			},
+			err => console.log(err)
+		)
+	});
+}
+
 //등록이벤트 (완료)
 function addRow() {
 	//db insert & 화면출력
 	//사원이름(ename), 연락처(phone),(email),(hire), 급여(salary)
-	//let ename = document.querySelector('#ename').value;
-	//let ephone = document.querySelector('#ephone').value;
-	//let ehire = document.querySelector('#ehire').value;
-	//let esalary = document.querySelector('#esalary').value;
-	//let email = document.querySelector('#email').value
 	let paramObj = {
 		job: 'add',
 		name: document.querySelector('#ename').value,
@@ -132,9 +158,5 @@ function updateRow() {
 	)
 
 }
-
-
-
-
 
 

@@ -25,7 +25,7 @@ const svc = {
 		fetch('../empsave.json', {
 			method: 'post',
 			headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-			body: 'job=edit&empNo=' + empNo + '&salary=' + salary + '&email=' + email
+			body: 'job=edit&empNo=' + param.empNo + '&salary=' + param.salary + '&email=' + param.email
 		})
 			.then(result => result.json())
 			.then(successCall)

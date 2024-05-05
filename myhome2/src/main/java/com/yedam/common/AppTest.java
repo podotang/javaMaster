@@ -1,6 +1,5 @@
 package com.yedam.common;
 
-import java.sql.Date;
 import java.util.List;
 
 import com.yedam.dao.EmpDAO;

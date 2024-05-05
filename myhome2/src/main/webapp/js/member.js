@@ -110,9 +110,3 @@ document.querySelector('#updateBtn').addEventListener('click', function() {
 
 
 
-
-
-
-
-
-

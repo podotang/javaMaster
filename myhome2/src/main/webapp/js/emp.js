@@ -88,16 +88,12 @@ function updateRow() {
 	editHtp.onload = function() {
 		let result = JSON.parse(editHtp.responseText);
 		console.log(result);
-		console.log(oldTr);
 		//oldTr, newTr 이용해서 수정누르면 다시 인풋이던게 원래로 돌아가기
 		if (result.returnCode == 'OK') {
 			let newTr = makeRow(result.retVal);
 			oldTr.parentElement.replaceChild(newTr, oldTr);
 		}	}
 }
-
-
-
 
 function deleteRow() {
 	//이벤트핸들러에서 이벤트 대상은 click되는 버튼임!
@@ -120,16 +116,6 @@ function deleteRow() {
 		}
 	}
 }
-
-
-
-
-
-
-
-
-
-
 
 
 
