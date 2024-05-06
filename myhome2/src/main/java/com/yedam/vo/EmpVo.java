@@ -12,7 +12,7 @@ public class EmpVo {
 	private String empName;
 	private String empPhone;
 	private String email;
-	private String hireDate;	//2020-05-2
+	private String hireDate;	//2020-05-02
 	private int salary;
 }
 
