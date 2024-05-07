@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>DataTables</title>
+<link
+	href="//cdn.datatables.net/2.0.6/css/dataTables.dataTables.min.css"
+	rel="stylesheet">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="//cdn.datatables.net/2.0.6/js/dataTables.min.js"></script>
+</head>
+<body>
+<button id="delBtn">삭제</button>
+	<table id="example" class="display" style="width: 100%">
+		<thead>
+			<tr>
+				<th>사번</th>
+				<th>이름</th>
+				<th>이메일</th>
+				<th>전화번호</th>
+				<th>급여</th>
+			</tr>
+		</thead>
+		<tfoot>
+			<tr>
+				<th>사번</th>
+				<th>이름</th>
+				<th>이메일</th>
+				<th>전화번호</th>
+				<th>급여</th>
+			</tr>
+		</tfoot>
+	</table>
+
+	<script>
+		//ajax : servlet 주소적어주기 데이터모양 {["","",""],["","",""],["","",""],["","",""],}
+/* 		new DataTable('#example', {
+			ajax : {
+				url : '../dataTable.do', // 서블릿 URL
+				dataSrc : 'data' // 서버 응답에서 데이터 배열을 담고 있는 필드
+			},
+			columns : [ {
+				data : 'empNo'
+			}, // 사번
+			{
+				data : 'empName'
+			}, // 이름
+			{
+				data : 'email'
+			}, // 이메일
+			{
+				data : 'empPhone'
+			}, // 전화번호
+			{
+				data : 'salary'
+			} // 급여
+			]
+		}); */
+		const table = new DataTable('#example', {
+			ajax : '../dataTable.do'
+		});	
+		
+		let eno = -1;
+		
+		table.on('click', 'tbody tr', (e) => {
+		    let classList = e.currentTarget.classList;
+		    eno = e.currentTarget.children[0].innerText;
+		    console.log(eno);
+		    if (classList.contains('selected')) {
+		        classList.remove('selected');
+		    }
+		    else {
+		        table.rows('.selected').nodes().each((row) => row.classList.remove('selected'));
+		        classList.add('selected');
+		    }
+		});
+
+	 	document.querySelector('#delBtn').addEventListener('click', function () {
+	 		if(eno < 0){
+	 			alert("삭제할 사번 선택");
+	 			return;
+	 		}
+	 		
+	 		console.log(eno);
+	 		
+			fetch('../dataDelte.do?eno=' + eno)
+			.then(result => result.json())
+			.then(result => {
+				if(result.returnCode == 'OK'){
+		    		table.row('.selected').remove().draw(false);
+					eno =-1;
+				}else if(result.returnCode == 'NG'){
+					alert('처리실패');
+				}
+			})	
+		.catch(err => console.log(err));
+			
+		}); 
+	</script>
+</body>
+</html>

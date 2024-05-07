@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>도서관리</title>
+<script src="js/book.js"></script>
+<style>
+
+form ul {
+	list-style: none;
+	width: 350px;
+}
+
+li {
+	margin: 10px;
+	display: inline-block;
+}
+
+form label {
+	display: inline-block;
+}
+
+#float label {
+	float: left;
+	text-align: center;
+}
+
+form input {
+	padding: 5px;
+	width: 200px;
+}
+
+#wide {
+	background-color: rgb(240, 216, 82);
+	width: 100px;
+	padding: 5px;
+}
+
+
+#register {
+	width: 500px; 
+	display: flex;
+	justify-content: space-between; 
+	align-items: center; 
+}
+
+fieldset {
+	border: none;
+}
+
+#btn {
+	display: flex;
+	flex-direction: column; 
+	align-items: center;
+}
+
+#delete{
+	margin-top: 20px;
+}
+
+#save{
+	width: 100%;
+}
+
+table{
+	width: 600px;
+}
+
+</style>
+<!-- http://localhost:8080/T20240507/ -->
+</head>
+<body>
+	<div id="register">
+		<form action="book.jsp" method="post" name="book">
+			<fieldset id="float">
+				<ul>
+					<li><label for="code" id="wide">도서코드</label> <input
+						type="text" id="code"></li>
+					<li><label for="bookname" id="wide">도서명</label> <input
+						type="text" id="bookname"></li>
+					<li><label for="writer" id="wide">저자</label> <input
+						type="text" id="writer"></li>
+					<li><label for="publisher" id="wide">출판사</label> <input
+						type="text" id="publisher"></li>
+					<li><label for="amount" id="wide">금액</label> <input
+						type="text" id="amount"></li>
+				</ul>
+			</fieldset>
+		</form>
+		<div id="btn">
+		<button id="save">저장</button>
+		<button id="delete">선택삭제</button>
+		</div>
+	</div>
+	<hr />
+	<div id="list">
+		<table border="2" id="tlist">
+			<thead>
+				<tr>
+					<th><input type="checkbox" id="check"></th>
+					<th>도서코드</th>
+					<th>도서명</th>
+					<th>저자</th>
+					<th>출판사</th>
+					<th>가격</th>
+					<th>삭제</th>
+				</tr>
+			</thead>
+			<tbody id="tbody">
+
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

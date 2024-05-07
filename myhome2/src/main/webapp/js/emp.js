@@ -97,8 +97,6 @@ function updateRow() {
 }
 
 
-
-
 function deleteRow() {
 	//이벤트핸들러에서 이벤트 대상은 click되는 버튼임!
 	const delNo = this.parentElement.parentElement.children[0].innerText;

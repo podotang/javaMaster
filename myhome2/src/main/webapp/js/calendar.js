@@ -5,8 +5,9 @@ function initForm() {
 	show.appendChild(svc.makeTable());
 	//document.querySelector('#show>table').appendChild(svc.makeHeader());
 	document.querySelector('#show>table').appendChild(svc.makeHeader2());
-	document.querySelector('#show>table').appendChild(svc.makeBody());
-	
+	//달별로 달력출력
+	document.querySelector('#show>table').appendChild(svc.makeBody(1));
+
 	console.log(show);
 }
 
@@ -31,7 +32,7 @@ const svc = {
 		thd.appendChild(tr);
 		return thd;
 	},
-	
+
 	makeHeader2: function() {
 		const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thr', 'Fri', 'Sat'];
 		let tr = days.reduce((acc, curVal) => {
@@ -46,10 +47,11 @@ const svc = {
 		return thd;
 	},
 
-	makeBody: function() {
+	makeBody: function(month) {
 		let tbd = document.createElement('tbody');
 		let tr = document.createElement('tr');
-		let spaces = 1;
+		let spaces = this.getFirstDate(month);
+		//		let spaces = 1;
 		for (let i = 0; i < spaces; i++) {
 			let td = document.createElement('td');
 			td.innerHTML = " ";
@@ -58,7 +60,7 @@ const svc = {
 
 		//시작 두번째 칸부터
 		//토요일 지나면 다음줄로
-		for (let d = 1; d <= 30; d++) {
+		for (let d = 1; d <= this.getLastDate(month); d++) {
 			let td = document.createElement('td');
 			td.innerHTML = d;
 			tr.appendChild(td);
@@ -71,7 +73,18 @@ const svc = {
 		}
 		tbd.appendChild(tr);
 		return tbd;
+	},
+	getFirstDate(month) {
+		// Date 객체 홀용해서 계산
+		let now = new Date(2024, month -1, 1);
+		console.log('요일위치', now.getDay);
+		return now.getDay();
+	},
+	getLastDate(month) {
+		let now = new Date(2024, month, 0);
+		return now.getDate();
 	}
+
 
 }// end of svc
 
