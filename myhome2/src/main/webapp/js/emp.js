@@ -88,7 +88,6 @@ function updateRow() {
 	editHtp.onload = function() {
 		let result = JSON.parse(editHtp.responseText);
 		console.log(result);
-		console.log(oldTr);
 		//oldTr, newTr 이용해서 수정누르면 다시 인풋이던게 원래로 돌아가기
 		if (result.returnCode == 'OK') {
 			let newTr = makeRow(result.retVal);
@@ -118,16 +117,6 @@ function deleteRow() {
 		}
 	}
 }
-
-
-
-
-
-
-
-
-
-
 
 
 
