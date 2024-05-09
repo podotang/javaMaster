@@ -30,6 +30,7 @@ public class InfoControl implements Control {
 		SqlSession session = DataSource.getInstance().openSession(true);
 		// EmpMapper은 여기서 인터페이스꺼가져오는거임
 		EmpMapper mapper = session.getMapper(EmpMapper.class);
+		
 		List<EmployeeVO> list =mapper.selectEmp();
 		req.setAttribute("elist", list);
 		
@@ -37,8 +38,6 @@ public class InfoControl implements Control {
 		//System.out.println("address : " + req);
 		RequestDispatcher rd = req.getRequestDispatcher("info.jsp");
 		rd.forward(req, resp);
-		
-		
 		
 		
 

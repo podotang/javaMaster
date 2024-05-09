@@ -17,10 +17,12 @@ import com.yedam.web.RegisterControl;
 
 public class FrontController extends HttpServlet {
 	Map<String,Control> map;
+	
 	// 생성자
 	public FrontController() {
 		map = new HashMap<>();
 	}
+	
 	// init
 	@Override
 	public void init(ServletConfig config) throws ServletException {
@@ -30,6 +32,7 @@ public class FrontController extends HttpServlet {
 		map.put("/addEmp.do", new AddEmpControl());
 		map.put("/registerEmp.do", new RegisterControl());
 	}
+	
 	// service
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -42,25 +45,13 @@ public class FrontController extends HttpServlet {
 		Control control = map.get(path);
 		control.exec(req,resp);
 	}
+	
 	// destroy
 	@Override
 	public void destroy() {
 
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+		
 	
 	
 }
