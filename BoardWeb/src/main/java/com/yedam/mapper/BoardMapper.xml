@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yedam.mapper.BoardMapper">
+
+	<select id="boardList" resultType="board">
+		select * from tbl_boards
+		order
+		by board_no
+	</select>
+
+	<insert id="insertBoard" parameterType="board">
+		insert into
+		tbl_boards(board_no,title,content,writer)
+		values(boards_seq.nextval,#{title},#{content},#{writer})
+	</insert>
+
+	<select id="selectBoard" parameterType="int" resultType="board">
+		select *
+		from tbl_boards
+		where board_no = #{boardNo}
+	</select>
+
+	<update id="updateViewCnt" parameterType="int">
+		update tbl_boards
+		set
+		view_cnt = view_cnt +1
+		where board_no = #{boardNo}
+	</update>
+
+	<update id="updateBoard" parameterType="board">
+		update tbl_boards
+		set title = #{title},
+		content= #{content}
+		where board_no = #{boardNo}
+	</update>
+	
+	<delete id="deleteBoard" parameterType="board">
+		delete from tbl_boards
+		where board_no =#{boardNo}
+	</delete>
+
+</mapper>
+  
+  
+  
