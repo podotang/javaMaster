@@ -13,6 +13,7 @@
 	<c:otherwise>
 <form name="myForm">
 	<input type="hidden" name="bno" value="${result.boardNo}">
+	<input type="hidden" name="page" value="${page}">
 </form>
 <table class="table" action="">
   <tr>

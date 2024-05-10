@@ -26,7 +26,7 @@
 	<tr>
 	<c:choose>
 	<c:when test="${bno.writer eq logId}">	
-		<td colspan="3"><input type="submit" value="수정"></td>
+		<td colspan="3"><input type="submit" value="수정" class="btn btn-primary"></td>
 	</c:when>
 	<c:otherwise>
 		<td colspan="3"><input type="submit" disabled value="수정"></td>
@@ -36,6 +36,14 @@
 	
 </table>
 	<input type="hidden" name="bno" value="${bno.boardNo}">
+	<input type="hidden" name="page" value="${page}">
 </form>
 
 <jsp:include page="../includes/footer.jsp"></jsp:include>
+
+
+
+
+
+
+

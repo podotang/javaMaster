@@ -18,9 +18,9 @@ public class RemoveFormControl implements Control {
 		String bno = req.getParameter("bno");
 		BoardService svc = new BoardServiceImpl();
 		BoardVO vo =svc.getBoard(Integer.parseInt(bno));
-		
+		String page = req.getParameter("page");
 		req.setAttribute("bno", vo);
-		
+		req.setAttribute("page", page);
 		svc.delBoard(Integer.parseInt(bno));
 		
 		//열어주는 페이지

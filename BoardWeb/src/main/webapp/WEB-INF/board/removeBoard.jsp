@@ -24,6 +24,7 @@
 		</tr>
 </table>
 <input type="hidden" name="bno" value="${bno.boardNo}">
+<input type="hidden" name="page" value="${page}">
 </form>
 <script>
 	const logid = "${logId}";

@@ -6,7 +6,8 @@ import com.yedam.vo.BoardVO;
 import com.yedam.vo.MemberVO;
 
 public interface BoardService {
-	List<BoardVO> boardList();
+	List<BoardVO> boardList(int page);	//목록과 페이징
+	int getTotal();	//전체건수
 	boolean addBoard(BoardVO board);
 	BoardVO getBoard(int boardNo);
 	int addViewCnt(int boardNo);

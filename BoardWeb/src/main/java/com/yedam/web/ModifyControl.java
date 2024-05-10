@@ -19,8 +19,13 @@ public class ModifyControl implements Control {
 		String bno = req.getParameter("bno");
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
+		String page = req.getParameter("page");
 		BoardService svc = new BoardServiceImpl();
 		BoardVO vo = new BoardVO();
+		
+		
+		req.setAttribute("bno", bno);
+		req.setAttribute("page", page);
 
 		vo.setBoardNo(Integer.parseInt(bno));
 		vo.setTitle(title);
@@ -28,7 +33,7 @@ public class ModifyControl implements Control {
 
 		if (svc.modifyBoard(vo)) {
 			System.out.println("등록성공");
-			resp.sendRedirect("main.do");
+			resp.sendRedirect("main.do?page=" + page);	// 질의문자열 query string
 		} else {
 			System.out.println("등록실패");
 		}

@@ -28,6 +28,7 @@ public class FrontController extends HttpServlet {
 	public FrontController() {
 		map = new HashMap<>();
 	}
+	
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		map.put("/main.do", new MainControl());
@@ -45,8 +46,9 @@ public class FrontController extends HttpServlet {
 		map.put("/logForm.do", new LoginForm());
 		map.put("/login.do", new LoginControl());
 		map.put("/logout.do", new LogoutControl());
-		
+		//map.put("/logout.do", new LogoutControl());
 	}
+	
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
@@ -58,8 +60,8 @@ public class FrontController extends HttpServlet {
 		Control control = map.get(path);
 		control.exec(req,resp);
 	}
+	
 	@Override
 	public void destroy() {
 	}
-
 }
