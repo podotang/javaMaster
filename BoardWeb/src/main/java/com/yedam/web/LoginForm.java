@@ -8,12 +8,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.yedam.common.Control;
 
-public class AddFromControl implements Control {
+public class LoginForm implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String path = "WEB-INF/board/addBoard.jsp";
+		String path = "WEB-INF/member/loginForm.jsp";
 		req.getRequestDispatcher(path).forward(req, resp);
+		
+		
+
 	}
 
 }

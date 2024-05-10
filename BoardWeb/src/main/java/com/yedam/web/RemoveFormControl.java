@@ -15,16 +15,17 @@ public class RemoveFormControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		BoardService svc = new BoardServiceImpl();
-		BoardVO vo = new BoardVO();
 		String bno = req.getParameter("bno");
+		BoardService svc = new BoardServiceImpl();
+		BoardVO vo =svc.getBoard(Integer.parseInt(bno));
 		
 		req.setAttribute("bno", vo);
+		
+		svc.delBoard(Integer.parseInt(bno));
 		
 		//열어주는 페이지
 		String path = "WEB-INF/board/removeBoard.jsp";
 		req.getRequestDispatcher(path).forward(req, resp);
-		
 		
 	}
 

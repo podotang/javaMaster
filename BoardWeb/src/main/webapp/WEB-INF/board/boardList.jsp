@@ -1,13 +1,8 @@
-<%@page import="com.yedam.vo.BoardVO"%>
-<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <jsp:include page="../includes/header.jsp"></jsp:include>
-
-<%
-	List<BoardVO> list = (List<BoardVO>) request.getAttribute("boardList");
-%>
 <h3>게시글 목록</h3>
 <!-- 글번호, 제목, 작성자, 작성일시, 조회수 -->
 
@@ -18,15 +13,15 @@
 		</tr>
 	</thead>
 	<tbody>
-	<%for(BoardVO board : list){ %>
+	<c:forEach var="board" items="${boardList }">
 		<tr>
-			<td><%=board.getBoardNo() %></td>
-			<td><a href="boardInfo.do?bno=<%=board.getBoardNo() %>"><%=board.getTitle()%></td>
-			<td><%=board.getWriter()%></td>
-			<td><%=board.getCreateDate()%></td>
-			<td><%=board.getViewCnt()%></td>
+			<td>${board.boardNo }</td>
+			<td><a href="boardInfo.do?bno=${board.boardNo }"> ${board.title }</a></td>
+			<td>${board.writer }</td>
+			<td><fmt:formatDate value="${board.createDate }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+			<td>${board.viewCnt }</td>
 		</tr>
-		<%} %>
+	</c:forEach>
 	</tbody>
 </table>
 

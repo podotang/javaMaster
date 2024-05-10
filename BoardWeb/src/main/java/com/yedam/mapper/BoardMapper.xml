@@ -36,10 +36,21 @@
 		where board_no = #{boardNo}
 	</update>
 	
-	<delete id="deleteBoard" parameterType="board">
+	<delete id="deleteBoard" parameterType="int">
 		delete from tbl_boards
 		where board_no =#{boardNo}
 	</delete>
+	
+	<select id="selectMember" resultType="member">
+		select * from tbl_members
+		where user_id = #{id}
+		and user_pw = #{pw}
+	</select>
+	
+	<select id="selectMember2" resultType="member">
+		select * from tbl_members
+		where user_id = #{id}
+	</select>
 
 </mapper>
   

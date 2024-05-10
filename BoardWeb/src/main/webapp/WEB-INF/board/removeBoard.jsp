@@ -1,34 +1,43 @@
 <%@page import="com.yedam.vo.BoardVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <jsp:include page="../includes/header.jsp"></jsp:include>
-<% 
-BoardVO vo = (BoardVO) request.getAttribute("bno");
-%>
 <h3>삭제</h3>
-<form action="removeBoard.do">
+
+<form name="myFrm" action="main.do">
 <table class="table">
  	<tr>
- 		<th>글번호</th><td><%=vo.getBoardNo()%></td>
+ 		<th>글번호</th><td>${bno.boardNo}</td>
  	</tr>
  	<tr>
- 		<th>제목</th><td><%=vo.getTitle()%></td>
+ 		<th>제목</th><td>${bno.title}</td>
  	</tr>
  	<tr>
- 		<th>내용</th><td><%=vo.getContent() %></td>
+ 		<th>내용</th><td>${bno.content}</td>
  	</tr>
  	<tr>
- 		<th>작성자</th><td><%=vo.getWriter() %></td>
+ 		<th>작성자</th><td>${bno.writer}</td>
  	</tr>
  		<tr align="center">
-			<td colspan="2"><input type="submit" value="삭제"></td>
+			<td colspan="2"><input type="submit" class="btn btn-danger" value="삭제"></td>
 		</tr>
 </table>
-<input type="hidden" name="bno" value="<%=vo.getBoardNo() %>">
+<input type="hidden" name="bno" value="${bno.boardNo}">
 </form>
-</form>
-    
-    
+<script>
+	const logid = "${logId}";
+	const writer= "${bno.writer}";
+	document.forms.myFrm.addEventListener('submit',function(e){
+		e.preventDefault();
+		if(logid != writer){
+			alert("권한이 없습니다");
+			return;
+		}
+		this.submit();
+	});
+
+</script>
 <jsp:include page="../includes/footer.jsp"></jsp:include>
     
     

@@ -1,32 +1,33 @@
-<%@page import="com.yedam.vo.BoardVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <jsp:include page="../includes/header.jsp"></jsp:include>
 
 <h3>상세보기</h3>
-<% 
-BoardVO vo = (BoardVO) request.getAttribute("result");
-%>
-<% if (vo ==null){%>
-<p>조회된 결과가 없습니다</p>
-<%}else{%>
+
+<c:choose>
+	<c:when test="${empty result}">
+	<p>조회된 결과가 없습니다</p>
+	</c:when>
+	<c:otherwise>
 <form name="myForm">
-	<input type="hidden" name="bno" value="<%=vo.getBoardNo() %>">
+	<input type="hidden" name="bno" value="${result.boardNo}">
 </form>
 <table class="table" action="">
   <tr>
-    <th>게시글번호</th><td><%=vo.getBoardNo() %></td>
-    <th>조회수</th><td><%=vo.getViewCnt() %></td>
+    <th>게시글번호</th><td>${result.boardNo}</td>
+    <th>조회수</th><td>${result.viewCnt}</td>
   </tr>
   <tr>
-    <th>제목</th><td><%=vo.getTitle() %></td>
-    <th>작성자</th><td><%=vo.getWriter() %></td>
+    <th>제목</th><td>${result.title}</td>
+    <th>작성자</th><td>${result.writer}</td>
   </tr>
   <tr>
-  	<th>내용</th><td colspan="4"><%=vo.getContent() %></td>
+  	<th>내용</th><td colspan="4">${result.content}</td>
   </tr>
   <tr>
-  	<th>작성일시</th><td colspan="3"><%=vo.getCreateDate() %></td>
+  	<th>작성일시</th><td colspan="3">${result.createDate}</td>
   </tr>
   <tr align="center">
   	<td colspan="4"> 
@@ -35,7 +36,9 @@ BoardVO vo = (BoardVO) request.getAttribute("result");
   	</td>
   </tr>
 </table>
-<%} %>
+	</c:otherwise>
+</c:choose>
+
 <script src="js/board.js"></script>
 
 <jsp:include page="../includes/footer.jsp"></jsp:include>

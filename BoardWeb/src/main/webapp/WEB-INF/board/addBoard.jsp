@@ -1,7 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!-- WEB-INF/board/addBoard.jsp -->
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <jsp:include page="../includes/header.jsp"></jsp:include>
+
+<c:if test="${message != null}">
+<p>${message }</p>
+</c:if>
 
 <form action="addBoard.do">
 	<table class="table">
@@ -11,7 +16,7 @@
 		</tr>
 		<tr>
 			<th>작성자</th>
-			<td><input type="text" name="writer"></td>
+			<td><input type="text" name="writer" readonly value="${logId }"></td>
 		</tr>
 		<tr>
 			<th>내용</th>
