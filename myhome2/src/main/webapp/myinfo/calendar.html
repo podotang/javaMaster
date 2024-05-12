@@ -7,8 +7,20 @@
 
 </head>
 <body>
-<!-- myinfo/calendar.html -->
-<div id="show"></div>
-
+	<!-- myinfo/calendar.html -->
+	<div id="show"></div>
+	<script>
+	//let now = new Date();		
+	let month = 10;
+	let now = new Date(2024,month,0,10,10,10);
+	console.log('년도 : ', now.getFullYear());
+	console.log('월 : ', now.getMonth()+1);
+	console.log('일 : ', now.getDate());
+	console.log('시 : ', now.getHours());
+	console.log('분 : ', now.getMinutes());
+	console.log('초 : ', now.getSeconds());
+	console.log('요일 : ', now.getDay());
+	console.log('말일: ', new Date(2024,4,0));
+	</script>
 </body>
 </html>

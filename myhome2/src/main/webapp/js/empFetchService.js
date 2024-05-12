@@ -40,7 +40,7 @@ function makeRow(emp = {}) {
 	let props = ['empNo', 'empName', 'email', 'salary']
 	let tr = document.createElement('tr');
 	//attribute 속성!
-	tr.setAttribute('data-no', emp.empNo)
+	tr.setAttribute('data-no', emp.empNo);
 	tr.addEventListener('dblclick', modifyRow);
 	props.forEach(prop => {
 		let td = document.createElement('td');

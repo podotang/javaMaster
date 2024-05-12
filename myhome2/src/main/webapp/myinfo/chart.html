@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript"
+	src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    let dataAry = [];
+    fetch('../getCntPerDept.do')
+    .then(result => result.json())
+    .then(result =>{
+    	console.log(result) //object타입
+    	dataAry.push(['Dept','countPerDept']);
+    	for(let prop in result){
+    		dataAry.push([prop, result[prop]]);
+    	}
+    console.log(dataAry);	//배열타입
+    //구글 프린트부분 여기 순서 중요!!
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+    })
+    .catch(err => console.log(err));
+    
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable(dataAry);
+
+       
+        var options = {
+          title: '부서별 인원 현황'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+</head>
+<body>
+	<div id="piechart" style="width: 900px; height: 500px;"></div>
+</body>
+</html>

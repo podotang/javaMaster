@@ -1,6 +1,8 @@
 package com.yedam.common;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import com.yedam.dao.EmpDAO;
 import com.yedam.vo.EmpVo;
@@ -46,7 +48,14 @@ public class AppTest {
 			System.out.println("처리실패");
 		}
 		
+//		EmpDAO edao = new EmpDAO();
+		Map<String,Integer> resultMap = edao.getCntPerDept();
+		Set<String> keyset = resultMap.keySet();
+		for(String key : keyset) {
+			System.out.println("key " + key + ",val" + resultMap.get(key));
+		}
+
 		
-	}
+	}// end of main
 
 }
