@@ -13,10 +13,7 @@
 <a href="main.do">메인으로 이동</a>
 <%-- <jsp:forward page="main.do"></jsp:forward> --%>
 <my:lines/>
--------
 
-
-======
 <script>
 	let name = "hong";
 	let msg = `name => \${name}`;
