@@ -20,6 +20,7 @@
 
 <h3>상세보기</h3>
 
+
 <form name="myForm">
 	<input type="hidden" name="bno" value="${result.boardNo}">
 	<input type="hidden" name="page" value="${page}">
