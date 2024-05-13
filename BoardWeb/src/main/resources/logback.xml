@@ -11,6 +11,9 @@
   <logger name="com.yedam.mapper.BoardMapper">
     <level value="trace"/>
   </logger>
+   <logger name="com.yedam.mapper.ReplyMapper">
+    <level value="trace"/>
+  </logger>
   <root level="error">
     <appender-ref ref="stdout"/>
   </root>

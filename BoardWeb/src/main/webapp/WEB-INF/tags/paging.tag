@@ -7,15 +7,15 @@
   <div class="pagination">
   
   <c:if test="${pageInfo.prev }">	<!-- 이전체이지 여부 -->
-  <a href="main.do?page=${pageInfo.startPage-1}">&laquo;</a>
+  <a href="main.do?searchCondition=${searchCondition}&keyword=${keyword}&page=${pageInfo.startPage-1}">&laquo;</a>
   </c:if>
   
   <c:forEach var="p" begin="${pageInfo.startPage}" end="${pageInfo.endPage}">
-  <a href="main.do?page=${p }" class="${p == pageInfo.page ? 'active' : ''}">${p }</a>
+  <a href="main.do?searchCondition=${searchCondition}&keyword=${keyword}&page=${p }" class="${p == pageInfo.page ? 'active' : ''}">${p }</a>
   </c:forEach>
   
   <c:if test="${pageInfo.next }">	<!-- 이후체이지 여부 -->
-   <a href="main.do?page=${pageInfo.endPage+1}">&raquo;</a>
+   <a href="main.do?searchCondition=${searchCondition}&keyword=${keyword}&page=${pageInfo.endPage+1}">&raquo;</a>
    </c:if>
   
   </div>

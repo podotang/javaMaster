@@ -25,6 +25,7 @@ public class RemoveFormControl implements Control {
 		
 		//열어주는 페이지
 		String path = "WEB-INF/board/removeBoard.jsp";
+		path ="board/removeBoard.tiles";
 		req.getRequestDispatcher(path).forward(req, resp);
 		
 	}

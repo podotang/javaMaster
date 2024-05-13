@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<jsp:include page="../includes/header.jsp"></jsp:include>
 
 <form action="login.do" method="post">
 <table class="table">
@@ -20,4 +19,3 @@
 </form>
 
 
-<jsp:include page="../includes/footer.jsp"></jsp:include>

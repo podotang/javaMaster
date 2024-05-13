@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <!-- WEB-INF/board/addBoard.jsp -->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<jsp:include page="../includes/header.jsp"></jsp:include>
 
 <c:if test="${message != null}">
 <p>${message }</p>
@@ -19,8 +18,8 @@
 			<td><input type="text" name="writer" readonly value="${logId }"></td>
 		</tr>
 		<tr>
-		<th>파일</th>
-		<td><input type="file" name="myImg"></td>
+			<th>파일</th>
+			<td><input type="file" name="myImg"></td>
 		</tr>
 		<tr>
 			<th>내용</th>
@@ -32,4 +31,3 @@
 	</table>
 </form>
 
-<jsp:include page="../includes/footer.jsp"></jsp:include>
