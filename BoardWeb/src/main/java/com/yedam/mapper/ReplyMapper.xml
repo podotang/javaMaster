@@ -10,14 +10,37 @@
 		order by reply_no
 	</select>
 	
+	<select id="replyListPaging" resultType="com.yedam.vo.ReplyVO" 
+			parameterType="com.yedam.common.SearchVO">	
+		SELECT *
+		FROM (
+		    SELECT rownum rn, a.*
+		    FROM (
+		        SELECT * 
+		        FROM tbl_replyes
+		        WHERE board_no = #{boardNo}
+		        ORDER BY reply_no desc
+		    ) a
+		    <![CDATA[
+		    WHERE rownum <= (#{rpage} * 5)
+		    ]]> 
+		) r
+		WHERE r.rn > ((#{rpage} - 1) * 5)
+
+	</select>
+	
 	<delete id="deleteReply" parameterType="int">
 		delete from tbl_replyes
 		where reply_no = #{replyNo}
 	</delete>
 	<insert id="insertReply" parameterType="com.yedam.vo.ReplyVO">
+		<selectKey resultType="int" keyProperty="replyNo" order="BEFORE">
+			select reply_seq.nextval from dual
+		</selectKey>
 		insert into tbl_replyes(reply_no,reply,replyer,board_no)
-		values(reply_seq.nextval,#{reply},#{replyer},#{boardNo})
+		values(#{replyNo},#{reply},#{replyer},#{boardNo})
 	</insert>
+	
 	
 </mapper>
   

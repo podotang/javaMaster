@@ -33,13 +33,10 @@
 .pagination a:hover:not(.active) {background-color: #ddd;}
 </style>
 
-
-
-
 <h3>게시글 목록</h3>
 <!-- 글번호, 제목, 작성자, 작성일시, 조회수 -->
 
-<table class="table table-striped">
+<table class="table">
 	<thead>
 		<tr>
 			<th>글번호</th><th>제목</th><th>작성자</th><th>작성일시</th><th>조회수</th>

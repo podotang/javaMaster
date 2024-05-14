@@ -3,7 +3,7 @@ package com.yedam.test;
 import org.apache.ibatis.session.SqlSession;
 
 import com.yedam.common.DataSource;
-import com.yedam.mapper.BoardMapper;
+import com.yedam.common.SearchVO;
 import com.yedam.mapper.ReplyMapper;
 import com.yedam.service.BoardService;
 import com.yedam.service.BoardServiceImpl;
@@ -56,8 +56,15 @@ public class BoardTest {
 		// 인터페이스
 		ReplyMapper mapper = session.getMapper(ReplyMapper.class);
 		
-		mapper.replyList(165)
-			.forEach(reply -> System.out.println(reply));
+//		mapper.replyList(165)
+//			.forEach(reply -> System.out.println(reply));
+		
+		SearchVO search = new SearchVO();
+		search.setBoardNo(165);
+		search.setRpage(2);
+		
+		mapper.replyListPaging(search)
+		.forEach(reply -> System.out.println(reply));
 		
 		
 	}
