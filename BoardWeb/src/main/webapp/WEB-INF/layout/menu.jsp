@@ -16,7 +16,7 @@
            <a class="list-group-item list-group-item-action list-group-item-light p-3" href="logout.do">로그아웃</a>
            </c:otherwise>
            </c:choose>
-           <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Profile</a>
+           <a class="list-group-item list-group-item-action list-group-item-light p-3" href="productList.do">상품목록</a>
            <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Status</a>
        </div>
    </div>

@@ -3,7 +3,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="my"%>
-<jsp:include page="../includes/header.jsp"></jsp:include>
 
 <style>
 .center {
@@ -61,7 +60,6 @@
 
 
 
-<jsp:include page="../includes/footer.jsp"></jsp:include>
 
 
 

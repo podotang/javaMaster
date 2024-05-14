@@ -26,6 +26,7 @@ import com.yedam.web.RemoveControl;
 import com.yedam.web.RemoveFormControl;
 import com.yedam.web.RemoveReplyControl;
 import com.yedam.web.ReplyListControl;
+import com.yedam.web.TotalCountControl;
 
 public class FrontController extends HttpServlet {
 	Map<String, Control> map;
@@ -36,11 +37,11 @@ public class FrontController extends HttpServlet {
 	
 	@Override
 	public void init(ServletConfig config) throws ServletException {
-		map.put("/main.do", new MainControl());
+		map.put("/main.do", new MainControl());	//
 		//Form.do는 등록등 보여주는기능
-		map.put("/addForm.do", new AddFromControl());
+		map.put("/addForm.do", new AddFromControl());	//
 		map.put("/addBoard.do", new AddBoardControl());
-		map.put("/boardInfo.do", new BoardInfoControl());
+		map.put("/boardInfo.do", new BoardInfoControl());	//
 		//수정화면여는기능
 		map.put("/modBoardForm.do", new ModifyFormControl());
 		//실제 수정하고 목록으로이동
@@ -55,6 +56,7 @@ public class FrontController extends HttpServlet {
 		map.put("/replyList.do", new ReplyListControl());
 		map.put("/removeReply.do", new RemoveReplyControl());
 		map.put("/addReply.do", new AddReplyControl());
+		map.put("/getTotalCnt.do", new TotalCountControl());
 		//관리자권한
 		map.put("/memberList.do", new MemberListControl());
 		//상품관련
@@ -63,7 +65,8 @@ public class FrontController extends HttpServlet {
 	
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.setCharacterEncoding("utf-8");
+		//req.setCharacterEncoding("utf-8"); =>web.xml에서 filter로 설정
+		
 		String uri =req.getRequestURI();
 		String context = req.getContextPath();
 		System.out.println("uri : " + uri + ", context " + context);
@@ -77,3 +80,4 @@ public class FrontController extends HttpServlet {
 	public void destroy() {
 	}
 }
+

@@ -28,6 +28,14 @@
 		WHERE r.rn > ((#{rpage} - 1) * 5)
 
 	</select>
+
+
+	<select id="getReplyTotalCnt" resultType="com.yedam.vo.ReplyVO" parameterType="com.yedam.vo.ReplyVO">
+		select count(*)
+		from tbl_replyes
+		where board_no =#{boardNo}
+	</select>
+
 	
 	<delete id="deleteReply" parameterType="int">
 		delete from tbl_replyes
@@ -40,6 +48,9 @@
 		insert into tbl_replyes(reply_no,reply,replyer,board_no)
 		values(#{replyNo},#{reply},#{replyer},#{boardNo})
 	</insert>
+	
+	
+	
 	
 	
 </mapper>

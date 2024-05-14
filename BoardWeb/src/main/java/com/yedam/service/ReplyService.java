@@ -9,5 +9,6 @@ public interface ReplyService {
 	List<ReplyVO> replyList(SearchVO search);
 	boolean removeReply(int replyNo);	
 	boolean addReply(ReplyVO rvo);
+	int getReplyCnt(int boardNo);
 	
 }

@@ -7,14 +7,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.yedam.common.Control;
+import com.yedam.common.HttpUtils;
 
 public class ProductListControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String path="product/productList.tiles";
-		req.getRequestDispatcher(path).forward(req, resp);
-		
+		//req.getRequestDispatcher(path).forward(req, resp);
+		HttpUtils.forward(req, resp, path);
+
 		
 	}
 

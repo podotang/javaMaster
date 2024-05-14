@@ -32,4 +32,11 @@ public class ReplyServiceImpl implements ReplyService{
 		return mapper.insertReply(rvo)==1;
 	}
 
+	@Override
+	public int getReplyCnt(int boardNo) {
+		return mapper.getReplyTotalCnt(boardNo);
+	}
+
+
+
 }

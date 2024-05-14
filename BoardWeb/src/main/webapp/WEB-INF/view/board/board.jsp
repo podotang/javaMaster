@@ -2,17 +2,21 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <style>
+	
 	div.reply div{
 		margin: auto;
 	}
+	
 	div.reply ul{
 		list-style-type: none;
 		margin-top:5px
 	}
+	
 	div.reply li{
 		padding-top:1px;
 		padding-botton:1px
 	}
+	
 	div.reply span{
 		disply:inline-block;
 	}
@@ -109,7 +113,7 @@
 	  		<ul>
 	  			<li>
 	  				<span class="col-sm-2">글번호</span>
-	  				<span class="col-sm-5">댓내용</span>
+	  				<span class="col-sm-8">댓글내용</span>
 	  				<span class="col-sm-2">작성자</span>
 	  			</li>
 	  			<li>
@@ -118,7 +122,7 @@
 	  			<li style="display:none">
 	  				<span class="col-sm-2" id="bno">2</span>
 	  				<span class="col-sm-5" id="reply">2댓내용</span>
-	  				<span class="col-sm-2" id="writer">user01</span>
+	  				<span class="col-sm-3" id="writer">user01</span>
 	  				<span class="col-sm-2"><button onclick="deleteRow(event)" class="btn btn-warning">삭제</button></span>
 	  			</li>
 	  		</ul>
@@ -134,9 +138,11 @@
 			</div>
 	  	</div>
   	</div>
+  	
 <script>
 	const bno = '${result.boardNo}';
 	const writer = '${logId}';
 </script>
+<script src="js/replyService.js"></script>
 <script src="js/board.js"></script>
 

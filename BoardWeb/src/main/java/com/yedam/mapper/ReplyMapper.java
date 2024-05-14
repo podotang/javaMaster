@@ -12,5 +12,6 @@ public interface ReplyMapper {
 		//댓글삭제
 		int deleteReply(int replyNo);
 		int insertReply(ReplyVO rvo);
+		int getReplyTotalCnt(int boardNo);
 		
 }
