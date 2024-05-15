@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.yedam.web.AddBoardControl;
 import com.yedam.web.AddFromControl;
 import com.yedam.web.AddReplyControl;
+import com.yedam.web.AplyTotalCntControl;
 import com.yedam.web.BoardInfoControl;
 import com.yedam.web.LoginControl;
 import com.yedam.web.LoginForm;
@@ -34,7 +35,6 @@ public class FrontController extends HttpServlet {
 	public FrontController() {
 		map = new HashMap<>();
 	}
-	
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		map.put("/main.do", new MainControl());	//
@@ -61,6 +61,7 @@ public class FrontController extends HttpServlet {
 		map.put("/memberList.do", new MemberListControl());
 		//상품관련
 		map.put("/productList.do", new ProductListControl());
+		map.put("/getTotal.do", new AplyTotalCntControl());
 	}
 	
 	@Override

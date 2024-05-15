@@ -17,9 +17,9 @@ public class RemoveReplyControl implements Control {
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String rno = req.getParameter("rno");
 		
-		ReplyService svc = new ReplyServiceImpl();
+		ReplyService rsv = new ReplyServiceImpl();
 		
-		if(svc.removeReply(Integer.parseInt(rno))) {
+		if(rsv.removeReply(Integer.parseInt(rno))) {
 			resp.getWriter().print("{\"retCode\" : \"OK\"}");
 		}else {
 			resp.getWriter().print("{\"retCode\" : \"NG\"}");

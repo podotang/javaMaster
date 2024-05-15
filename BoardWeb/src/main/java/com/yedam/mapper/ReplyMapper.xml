@@ -30,7 +30,7 @@
 	</select>
 
 
-	<select id="getReplyTotalCnt" resultType="com.yedam.vo.ReplyVO" parameterType="com.yedam.vo.ReplyVO">
+	<select id="getReplyTotalCnt" resultType="int" parameterType="int">
 		select count(*)
 		from tbl_replyes
 		where board_no =#{boardNo}

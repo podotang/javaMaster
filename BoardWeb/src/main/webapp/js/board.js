@@ -1,4 +1,3 @@
-
 //수정버튼
 document.querySelector('#modBtn').addEventListener('click', function() {
 	document.forms.myForm.action = "modBoardForm.do"; //수정화면 호출
@@ -14,7 +13,7 @@ document.querySelector('.btn-danger').addEventListener('click', function() {
 // 댓글목록 출력
 //const bno = 165; 여기서 값을 읽어올수 없음
 let page = 1;
-console.log('bno:', bno);
+//console.log('bno:', bno);
 showList();
 
 function showList() {
@@ -27,7 +26,7 @@ function showList() {
 
 	svc.replyList({ bno: bno, page: page },
 		result => {
-			console.log(result);
+			//console.log(result);
 			result.forEach(reply => {
 				const row = makeRow(reply);
 				document.querySelector('div.reply ul').appendChild(row);
@@ -62,7 +61,6 @@ function deleteRow(e) {
 			console.log(err);
 		}
 	)
-
 }
 
 document.getElementById('addReply').addEventListener('click', function(e) {
@@ -77,6 +75,7 @@ document.getElementById('addReply').addEventListener('click', function(e) {
 				document.querySelector('div.reply ul').appendChild(row);
 				document.getElementById('reply').value = '';
 				alert('성공');
+				showList();
 			} else if (result.retCode == 'NG') {
 				alert('result!');
 			} else {
@@ -85,8 +84,6 @@ document.getElementById('addReply').addEventListener('click', function(e) {
 		},
 		err => console.log(err)
 	)
-
-
 
 })
 
@@ -97,7 +94,7 @@ function refuse(e) {
 //줄생성
 function makeRow(reply = {}) {
 	let tmpl = document.querySelector('div.reply li:nth-of-type(3)').cloneNode(true);
-	console.log(tmpl);
+	//console.log(tmpl);
 	tmpl.style.display = 'block';
 	tmpl.setAttribute('data-rno', reply.replyNo);
 	tmpl.querySelector('span:nth-of-type(1)').innerText = reply.replyNo;
@@ -113,13 +110,14 @@ let pagination = document.querySelector('div.pagination');
 
 function makePageInfo() {
 	svc.getTotalCount(bno
-		, createPageList //param2
-		, err => console.log(err))
+		, result => {
+		createPageList(result.totalCount)} //param2
+		, err => console.log(err));
 }
 
 
 function createPageList(result) {
-	console.log(result);
+	//console.log(result);
 
 	let totalCnt = result.totalCnt;	//
 	let startPage, endPage, realEnd;
@@ -132,9 +130,7 @@ function createPageList(result) {
 
 	prev = startPage > 1;
 	next = endPage < realEnd;
-
-	console.log(startPage, endPage, realEnd, prev, next);
-
+	//console.log(startPage, endPage, realEnd, prev, next);
 	//a태그 생성
 	pagination.innerHTML = '';
 	// 이전페이지 여부
@@ -148,9 +144,7 @@ function createPageList(result) {
 			e.preventDefault();	//aTag는 페이지 이동
 			page = e.target.dataset.page;	//페이지 지정
 			showList();
-
 		})
-
 	}
 	for (let pg = startPage; pg <= endPage; pg++) {
 		let aTag = document.createElement('a');
@@ -180,19 +174,8 @@ function createPageList(result) {
 			page = e.target.dataset.page;	//페이지 지정
 			showList();
 		})
-
 	}
-
 }
-
-
-
-
-
-
-
-
-
 
 
 
