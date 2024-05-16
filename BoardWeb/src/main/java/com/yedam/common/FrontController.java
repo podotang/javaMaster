@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.yedam.web.AddBoardControl;
 import com.yedam.web.AddFromControl;
 import com.yedam.web.AddReplyControl;
-import com.yedam.web.AplyTotalCntControl;
 import com.yedam.web.BoardInfoControl;
 import com.yedam.web.LoginControl;
 import com.yedam.web.LoginForm;
@@ -27,6 +26,7 @@ import com.yedam.web.RemoveControl;
 import com.yedam.web.RemoveFormControl;
 import com.yedam.web.RemoveReplyControl;
 import com.yedam.web.ReplyListControl;
+import com.yedam.web.ReplyModifyControl;
 import com.yedam.web.TotalCountControl;
 
 public class FrontController extends HttpServlet {
@@ -61,7 +61,8 @@ public class FrontController extends HttpServlet {
 		map.put("/memberList.do", new MemberListControl());
 		//상품관련
 		map.put("/productList.do", new ProductListControl());
-		map.put("/getTotal.do", new AplyTotalCntControl());
+		map.put("/modifyReply.do", new ReplyModifyControl());
+		
 	}
 	
 	@Override

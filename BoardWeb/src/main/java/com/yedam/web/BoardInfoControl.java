@@ -26,7 +26,6 @@ public class BoardInfoControl implements Control {
 		svc.addViewCnt(Integer.parseInt(bno)); //조회카운트 중가
 		req.setAttribute("result", vo);
 		req.setAttribute("page", page);
-		
 		req.setAttribute("searchCondition", sc);
 		req.setAttribute("keyword", kw);
 		
@@ -38,3 +37,5 @@ public class BoardInfoControl implements Control {
 	}
 
 }
+
+

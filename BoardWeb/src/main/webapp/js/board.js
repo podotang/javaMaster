@@ -23,7 +23,7 @@ function showList() {
 			li.remove();
 		}
 	})
-
+	//$('div.content ul li:gt(2)').remove();
 	svc.replyList({ bno: bno, page: page },
 		result => {
 			//console.log(result);
@@ -52,9 +52,9 @@ function deleteRow(e) {
 				tr.remove();
 				showList();
 			} else if (data.retCode == 'NG') {
-				alert('처리실패!');
+				alert('삭제불가!');
 			} else {
-				alert('처리실패!');
+				alert('알수없는 오류!');
 			}
 		},
 		err => {
@@ -101,7 +101,6 @@ function makeRow(reply = {}) {
 	tmpl.querySelector('span:nth-of-type(2)').innerText = reply.reply;
 	tmpl.querySelector('span:nth-of-type(3)').innerText = reply.replyer;
 	return tmpl;
-
 }
 
 //댓글 페이징 생성
@@ -110,11 +109,9 @@ let pagination = document.querySelector('div.pagination');
 
 function makePageInfo() {
 	svc.getTotalCount(bno
-		, result => {
-		createPageList(result.totalCount)} //param2
+		,createPageList //param2
 		, err => console.log(err));
 }
-
 
 function createPageList(result) {
 	//console.log(result);
@@ -132,13 +129,13 @@ function createPageList(result) {
 	next = endPage < realEnd;
 	//console.log(startPage, endPage, realEnd, prev, next);
 	//a태그 생성
-	pagination.innerHTML = '';
+	pagination.html = '';
 	// 이전페이지 여부
 	if (prev) {
 		let aTag = document.createElement('a');
 		aTag.setAttribute('data-page', startPage - 1);
 		aTag.setAttribute('href', '#');
-		aTag.innerHTML = "&laquo;";
+		aTag.html = "&laquo;";
 		pagination.appendChild(aTag);
 		aTag.addEventListener('click', function(e) {
 			e.preventDefault();	//aTag는 페이지 이동
@@ -154,7 +151,7 @@ function createPageList(result) {
 			//aTag.setAttribute()
 			aTag.className = 'active';
 		}
-		aTag.innerHTML = pg;
+		aTag.html = pg;
 		aTag.addEventListener('click', function(e) {
 			e.preventDefault();	//aTag는 페이지 이동
 			page = e.target.dataset.page;	//페이지 지정
@@ -167,7 +164,7 @@ function createPageList(result) {
 		let aTag = document.createElement('a');
 		aTag.setAttribute('data-page', endPage + 1);
 		aTag.setAttribute('href', '#');
-		aTag.innerHTML = "&raquo;";
+		aTag.html = "&raquo;";
 		pagination.appendChild(aTag);
 		aTag.addEventListener('click', function(e) {
 			e.preventDefault();	//aTag는 페이지 이동

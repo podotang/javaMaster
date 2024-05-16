@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jquerySelector</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+</head>
+<body>
+	<div id="selector1">
+		<ul>
+			<li>Apple</li>
+			<li>Banana</li>
+			<li>Cherry</li>
+			<li>Melon</li>
+		</ul>
+	</div>
+	<button>선택</button>
+	<button>변경</button>
+	<script>
+	//lt(n)	선택한 요소 중에서 인덱스가 n보다 작은 요소를 모두 선택함.
+		$('button:contains(선택)').on('click',function(){
+			$('ul li:lt(2)').css('color', 'red');
+			$('ul li:eq(2)').css('color', 'blue');
+			$('ul li:last').css('background-color', 'yellow');
+			$('ul li:not(:last)').css('background-color', 'pink');
+		})
+		//백 엘로 폰트 옐로
+		$('button:eq(1)').on('click',function(){
+			$('ul li:lt(2)').css('background-color','yellow');
+			$('ul li:not(:lt(2))').css('color','yellow');
+		})
+	</script>
+</body>
+</html>

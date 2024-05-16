@@ -10,5 +10,5 @@ public interface ReplyService {
 	boolean removeReply(int replyNo);	
 	boolean addReply(ReplyVO rvo);
 	int getReplyCnt(int boardNo);
-	
+	boolean modifyReply(ReplyVO rvo);
 }

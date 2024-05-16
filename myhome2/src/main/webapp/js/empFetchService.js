@@ -54,7 +54,6 @@ function makeRow(emp = {}) {
 	td.appendChild(btn);
 	tr.appendChild(td);
 
-
 	td = document.createElement('td');
 	let chk = document.createElement('input');
 	chk.setAttribute('type', 'checkbox');

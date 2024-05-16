@@ -18,20 +18,14 @@ public class TotalCountControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+		// TODO Auto-generated method stub
 		String bno = req.getParameter("bno");
-		//BoardService svc = new BoardServiceImpl();
-		ReplyService rsvc = new ReplyServiceImpl();
+		// service, mapper
+		ReplyService svc = new ReplyServiceImpl();
+		int cnt = svc.getReplyCnt(Integer.parseInt(bno));
 
-		
-		//json타입반환
-		//{"totoalCount": 10}
-		int cnt =rsvc.getReplyCnt(Integer.parseInt(bno));
-		
-		//svc.getTotal(Integer.parseInt(bno));
-		resp.getWriter().print("\"totoalCount\": "+ cnt + "}");
-		
-		
+		// {"totalCount": 10}
+		resp.getWriter().print("{\"totalCount\": " + cnt + "}");
 	}
 
 }

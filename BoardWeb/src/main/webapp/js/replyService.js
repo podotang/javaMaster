@@ -34,5 +34,17 @@ const svc = {
 			.then(resolve => resolve.json())	//{totalCount: 10}
 			.then(successCall)
 			.catch(errorCall);
+	},
+	
+	modifyReply(rno= 1,  successCall, errorCall){
+		fetch('modifyReply.do?rno=' +rno)
+		.then(resolve => resolve.json())	
+			.then(successCall)
+			.catch(errorCall);
 	}
+	
+	
+	
 } // end of svc.
+
+
