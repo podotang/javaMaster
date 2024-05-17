@@ -3,14 +3,14 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yedam.mapper.ReplyMapper">
-	<select id="replyList" resultType="com.yedam.vo.ReplyVO">
+	<select id="replyList" resultType="reply">
 		select * 
 		from tbl_replyes
 		where board_no = #{boardNo}
 		order by reply_no
 	</select>
 	
-	<select id="replyListPaging" resultType="com.yedam.vo.ReplyVO" 
+	<select id="replyListPaging" resultType="reply" 
 			parameterType="com.yedam.common.SearchVO">	
 		SELECT *
 		FROM (
@@ -41,7 +41,7 @@
 		delete from tbl_replyes
 		where reply_no = #{replyNo}
 	</delete>
-	<insert id="insertReply" parameterType="com.yedam.vo.ReplyVO">
+	<insert id="insertReply" parameterType="reply">
 		<selectKey resultType="int" keyProperty="replyNo" order="BEFORE">
 			select reply_seq.nextval from dual
 		</selectKey>
@@ -49,11 +49,30 @@
 		values(#{replyNo},#{reply},#{replyer},#{boardNo})
 	</insert>
 	
-	<update id="modifyReply" parameterType="com.yedam.vo.ReplyVO">
+	<update id="modifyReply" parameterType="reply">
 		update tbl_replyes
 		set reply = #{reply}
 		where reply_no = #{replyNo}
 	</update>
+	
+	
+	<select id="selectList" resultType="com.yedam.vo.CartVO">
+		select * 
+		from tbl_cart 
+		order by no
+	</select>
+	
+	<update id="updateCart" parameterType="com.yedam.vo.CartVO">
+		update tbl_cart
+		set qty = qty + #{qty}
+		where no = #{no}
+	</update>
+	
+	<delete id="deleteCart" parameterType="int">
+		delete from tbl_cart 
+		where no = #{no}
+	</delete>
+	
 	
 	
 	

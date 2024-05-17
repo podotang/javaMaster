@@ -1,3 +1,4 @@
+
 $(document).ready(function() {
     // Create a "close" button and append it to each list item
     //화면의 li요소에 담기

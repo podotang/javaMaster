@@ -3,11 +3,11 @@ package com.yedam.test;
 import org.apache.ibatis.session.SqlSession;
 
 import com.yedam.common.DataSource;
-import com.yedam.common.SearchVO;
 import com.yedam.mapper.ReplyMapper;
 import com.yedam.service.BoardService;
 import com.yedam.service.BoardServiceImpl;
 import com.yedam.vo.BoardVO;
+import com.yedam.vo.CartVO;
 import com.yedam.vo.ReplyVO;
 
 public class BoardTest {
@@ -59,14 +59,21 @@ public class BoardTest {
 //		mapper.replyList(165)
 //			.forEach(reply -> System.out.println(reply));
 		
-		SearchVO search = new SearchVO();
-		search.setBoardNo(165);
-		search.setRpage(2);
+//		SearchVO search = new SearchVO();
+//		search.setBoardNo(165);
+//		search.setRpage(2);
+//		
+//		mapper.replyListPaging(search)
+//		.forEach(reply -> System.out.println(reply));
 		
-		mapper.replyListPaging(search)
-		.forEach(reply -> System.out.println(reply));
+		CartVO cvo =new CartVO();
+		cvo.setNo(1);
+		cvo.setQty(1);
+		int r = mapper.updateCart(cvo);
+		int d = mapper.deleteCart(cvo.getNo());
+		System.out.println("건수 : " + r);
 		
-		
+		mapper.selectList().forEach(cart -> System.out.println(cart));
 	}
 }
 
