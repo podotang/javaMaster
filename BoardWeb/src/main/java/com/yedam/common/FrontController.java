@@ -25,6 +25,7 @@ import com.yedam.web.MemberListControl;
 import com.yedam.web.ModifyControl;
 import com.yedam.web.ModifyFormControl;
 import com.yedam.web.ProductListControl;
+import com.yedam.web.RegisterCenter;
 import com.yedam.web.RemoveControl;
 import com.yedam.web.RemoveFormControl;
 import com.yedam.web.RemoveReplyControl;
@@ -65,10 +66,13 @@ public class FrontController extends HttpServlet {
 		//상품관련
 		map.put("/productList.do", new ProductListControl());
 		map.put("/modifyReply.do", new ReplyModifyControl());
-		// 장바구니관련	service부분 따로안만들고 ReplyService여기서 처리하겠음 
+		//장바구니관련	service부분 따로안만들고 ReplyService여기서 처리하겠음 
 		map.put("/cartList.do", new CartList()); //목록
 		map.put("/editCart.do", new EditCart()); //수량변경
 		map.put("/delCart.do", new DelCart()); //삭제
+		//공공데이터 활용
+		map.put("/registerCenter.do", new RegisterCenter());
+
 	}
 	
 	@Override

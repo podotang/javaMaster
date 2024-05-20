@@ -28,6 +28,7 @@ let basket = {
                     $rowDiv.attr('data-id', cart.no);
                     $rowDiv.find('div.img>img').attr('src', 'images/' + cart.productNm + '.jpg');
                     $rowDiv.find('div.pname>span').text(cart.productNm);
+                    
                     $rowDiv.find('div.basketprice').contents().filter(function() {
                         return this.nodeType === 3;
                     }).remove();
@@ -84,12 +85,12 @@ let basket = {
     changePNum: function(no) {
         console.log(event);
         let qty = -1;
-        if ($(event.target).is("i")) {
+        if ($(event.target).is("I")) {
             // 증가감소확인 아이콘클래스중 up이 있는지
             if ($(event.target).hasClass("up")) {
                 qty = 1;
             }
-        } else if ($(event.target).is("input")) {
+        } else if ($(event.target).is("INPUT")) {
             if (event.key === "ArrowUp") {
                 qty = 1;
             }
