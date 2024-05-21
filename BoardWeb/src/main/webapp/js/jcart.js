@@ -31,6 +31,7 @@ let basket = {
                     
                     $rowDiv.find('div.basketprice').contents().filter(function() {
                         return this.nodeType === 3;
+                        
                     }).remove();
                     $rowDiv.find('div.basketprice').append(document.createTextNode(cart.price.numberFormat() + "원"));
 

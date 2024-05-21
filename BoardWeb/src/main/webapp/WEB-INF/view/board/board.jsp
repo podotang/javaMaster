@@ -19,6 +19,7 @@
 </style>
 <link href="css/paging.css" rel="stylesheet" />
 <link href="css/modal.css" rel="stylesheet" />
+
 <h3>상세화면</h3>
 <c:choose>
   <c:when test="${empty result }">
@@ -47,7 +48,7 @@
         <td colspan="2">${result.content }</td>
         <td>
           <c:if test="${not empty result.img }">
-            <img style="width:80px;" src="images/${result.img }">
+            <img style="width:80px;" src="images/${result.prodImage }">
           </c:if>
         </td>
       </tr>
