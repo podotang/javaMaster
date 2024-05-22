@@ -23,7 +23,7 @@ public class TotalCountControl implements Control {
 		// service, mapper
 		ReplyService svc = new ReplyServiceImpl();
 		int cnt = svc.getReplyCnt(Integer.parseInt(bno));
-
+		req.setAttribute("cnt", cnt);
 		// {"totalCount": 10}
 		resp.getWriter().print("{\"totalCount\": " + cnt + "}");
 	}

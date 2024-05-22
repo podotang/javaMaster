@@ -15,8 +15,6 @@ public class LoginForm implements Control {
 		String path = "WEB-INF/member/loginForm.jsp";
 		path="member/loginForm.tiles";
 		req.getRequestDispatcher(path).forward(req, resp);
-		
-		
 
 	}
 

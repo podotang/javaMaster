@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
+<link href="./css/29review.css" rel="stylesheet" />
+<title>Document</title>
+</head>
+<body>
+    <div class="review-container">
+        <div class="review-header">
+            <div class="review-title">
+                <span class="title-text">리뷰</span><span class="title-count">(56)</span>
+                <span class="review-stars">★★★★★</span> <!-- 별 개수 추가 -->
+            </div>
+        </div>
+        <div class="review-images-container">
+            <span class="left-arrow" onclick="slideLeft()">&#10094;</span>
+            <div class="review-images">
+                <img src="./images/v1_312.png" class="image-item" />
+                <img src="./images/v1_314.png" class="image-item" />
+                <img src="./images/v1_316.png" class="image-item" />
+                <img src="./images/v1_318.png" class="image-item" />
+                <img src="./images/v1_320.png" class="image-item" />
+                <img src="./images/v1_322.png" class="image-item" />
+                <img src="./images/v1_324.png" class="image-item" />
+                <img src="./images/v1_326.png" class="image-item" />
+            </div>
+            <span class="right-arrow" onclick="slideRight()">&#10095;</span>
+        </div>
+        <div class="review-content">
+            <div class="review-item">
+                <div class="review-details">
+                    <span class="review-user">luv*****</span><span class="review-date">2024.05.14</span>
+                    <span class="review-option">사이즈 : M</span><span class="review-body">컬러 : black</span>
+                    <span class="review-size">사이즈 : 잘 맞아요</span>
+                    <div class="review-text">
+                        <span>기장은 무릎 살짝 덮는 정도 입니다 스몰 샀으면 딱맞아서 불편했을거 같아요. 하체는 타이트 하고 상체는 살짝 널널한편입니다. 한여름에는 더울거 …</span>
+                    </div>
+                </div>
+                <img src="./images/v1_312.png" class="review-thumb" /> <!-- 리뷰 썸네일 추가 -->
+            </div>
+            <!-- 추가적인 리뷰 아이템들 -->
+        </div>
+        <div class="pagination">
+            <span class="left" onclick="prevPage()">&#10094;</span>
+            <span class="page-number" onclick="goToPage(1)">1</span>
+            <span class="page-number" onclick="goToPage(2)">2</span>
+            <span class="page-number" onclick="goToPage(3)">3</span>
+            <span class="right" onclick="nextPage()">&#10095;</span>
+        </div>
+    </div>
+
+    <script>
+        const reviewImages = document.querySelector('.review-images');
+        let scrollAmount = 0;
+
+        function slideLeft() {
+            reviewImages.scrollTo({
+                top: 0,
+                left: (scrollAmount -= 200),
+                behavior: 'smooth'
+            });
+        }
+
+        function slideRight() {
+            reviewImages.scrollTo({
+                top: 0,
+                left: (scrollAmount += 200),
+                behavior: 'smooth'
+            });
+        }
+
+        function prevPage() {
+            // 이전 페이지로 이동하는 기능 구현
+        }
+
+        function nextPage() {
+            // 다음 페이지로 이동하는 기능 구현
+        }
+
+        function goToPage(pageNumber) {
+            // 특정 페이지로 이동하는 기능 구현
+        }
+    </script>
+</body>
+</html>

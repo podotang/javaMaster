@@ -48,7 +48,7 @@
         <td colspan="2">${result.content }</td>
         <td>
           <c:if test="${not empty result.img }">
-            <img style="width:80px;" src="images/${result.prodImage }">
+            <img style="width:80px;" src="images/${result.img }">
           </c:if>
         </td>
       </tr>
