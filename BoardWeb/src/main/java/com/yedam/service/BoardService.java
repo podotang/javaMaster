@@ -10,6 +10,8 @@ public interface BoardService {
 	List<BoardVO> boardList(SearchVO search);	//목록과 페이징
 	int getTotal(SearchVO search);	//전체건수
 	boolean addBoard(BoardVO board);
+	
+	
 	BoardVO getBoard(int boardNo);
 	int addViewCnt(int boardNo);
 	//수정

@@ -23,7 +23,6 @@ public class MainControl implements Control {
 		String path = "WEB-INF/board/boardList.jsp";
 		path ="board/boardList.tiles";
 		
-		
 		SearchVO search = new SearchVO();
 		//페이징처리
 		String page =req.getParameter("page");	// page 파라미터가 없을 경우에는 1페이지 출력.

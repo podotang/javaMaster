@@ -8,10 +8,10 @@
     </encoder>
   </appender>
 
-  <logger name="com.yedam.mapper.ReviewMapper">
+  <logger name="co.yedam.mapper.ReviewMapper">
     <level value="trace"/>
   </logger>
-   <logger name="com.yedam.mapper.ReviewMapper">
+   <logger name="co.yedam.mapper.ReviewMapper">
     <level value="trace"/>
   </logger>
   <root level="error">

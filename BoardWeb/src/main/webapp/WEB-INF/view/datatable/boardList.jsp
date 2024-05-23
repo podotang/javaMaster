@@ -45,7 +45,7 @@
 	<c:forEach var="board" items="${boardList }">
 		<tr>
 			<td>${board.boardNo }</td>
-			<td><a href="boardInfo.do?bno=${board.boardNo }&page=${paging.page}"> ${board.title }</a></td>
+			<td><a href="boardInfo.do?bno=${board.boardNo }&page=${paging.page }"> ${board.title }</a></td>
 			<td>${board.writer }</td>
 			<td><fmt:formatDate value="${board.createDate }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 			<td>${board.viewCnt }</td>

@@ -20,6 +20,6 @@
 			</environment>
 		</environments>
 	<mappers>
-		<mapper resource="co/yedam/mapper/ReviewMapper.xml" />
+		<mapper resource="com/yedam/mapper/review/ReviewMapper.xml" />
 	</mappers>
 </configuration>
