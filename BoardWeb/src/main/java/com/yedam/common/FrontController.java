@@ -39,6 +39,7 @@ public class FrontController extends HttpServlet {
 	public FrontController() {
 		map = new HashMap<>();
 	}
+	
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		map.put("/main.do", new MainControl());	//

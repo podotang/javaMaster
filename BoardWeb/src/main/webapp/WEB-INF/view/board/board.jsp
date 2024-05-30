@@ -26,12 +26,14 @@
     <p>조회된 결과가 없습니다.</p>
   </c:when>
   <c:otherwise>
+  
     <form name="myFrm">
       <input type="hidden" name="bno" value="${result.boardNo }">
       <input type="hidden" name="page" value="${page }">
       <input type="hidden" name="searchCondition" value="${searchCondition }">
       <input type="hidden" name="keyword" value="${keyword }">
     </form>
+    
     <table class="table">
       <tr>
         <th>게시글번호</th>
@@ -126,6 +128,7 @@
   const bno = '${result.boardNo }';
   const writer = '${logId }';
 </script>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="js/replyService.js"></script>
 <script src="js/jboard.js"></script>

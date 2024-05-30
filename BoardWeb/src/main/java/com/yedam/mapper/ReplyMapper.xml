@@ -26,7 +26,6 @@
 		    ]]> 
 		) r
 		WHERE r.rn > ((#{rpage} - 1) * 5)
-
 	</select>
 
 

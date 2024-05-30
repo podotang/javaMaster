@@ -41,6 +41,7 @@ public class AddBoardControl implements Control {
 			req.getRequestDispatcher("WEB-INF/board/addBoard.jsp").forward(req, resp);
 			return;
 		}
+		
 		vo.setTitle(title);
 		vo.setContent(content);
 		vo.setWriter(writer);
@@ -55,9 +56,5 @@ public class AddBoardControl implements Control {
 			resp.sendRedirect("addForm.do");
 		}
 
-//		List<BoardVO> list = svc.boardList(0);
-//		for (BoardVO board : list) {
-//			System.out.println(board.toString());
-//		}
 	}
 }
